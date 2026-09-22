@@ -1,0 +1,20 @@
+
+
+# Dependencias de Node
+node_modules/
+
+# Registros y entornos
+*.log
+*.env
+
+# Formatos de Imágenes
+*.png
+*.jpg
+*.jpeg
+*.svg
+
+# Formatos de audio y vídeo
+*.mp3
+*.mp4
+*.wav
+

@@ -1,0 +1,24 @@
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+
+html, body {
+	height: 100%;
+	overflow: hidden;
+}
+
+header {
+	height: 10dvh;
+	background-color: grey;
+}
+
+main {
+	height: 80dvh;
+}
+
+footer {
+	height: 10dvh;
+	background-color: grey;
+}
