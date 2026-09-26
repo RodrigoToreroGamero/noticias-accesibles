@@ -10,6 +10,8 @@ import { CATALOGOS_DATA } from './data/catalogos';
 import { NOTICIAS_POR_SUBDISCIPLINA } from './data/noticias';
 import './styles/App.css';
 
+import { stopSpeaking } from './services/textToSpeech';
+
 export default function App() {
   const [categoriaActual, setCategoriaActual] = useState(null);
   const [subcategoriaActual, setSubcategoriaActual] = useState(null);
@@ -20,6 +22,8 @@ export default function App() {
   let itemsVista = [];
   let textoBotonVolver = 'Volver al Inicio';
   let accionVolver = () => setCategoriaActual(null);
+  
+  stopSpeaking();	
 
   if (subcategoriaActual) {
     tituloVista = `Noticias de ${subcategoriaActual.toUpperCase()}`;

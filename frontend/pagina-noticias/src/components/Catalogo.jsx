@@ -78,17 +78,7 @@ export default function Catalogo({
         </div>
 
         {/* Columna de Flechas alineada con las filas */}
-        <div className="nav-arrows-column">
-          <button
-            type="button"
-            className="nav-arrow-btn"
-            aria-label="Bajar contenido"
-            onClick={scrollAbajo}
-            title="Bajar"
-          >
-            <ArrowDown size={28} />
-          </button>
-
+        <div className="nav-arrows-column">          
           <button
             type="button"
             className="nav-arrow-btn"
@@ -98,6 +88,16 @@ export default function Catalogo({
           >
             <ArrowUp size={28} />
           </button>
+		  
+		  <button
+            type="button"
+            className="nav-arrow-btn"
+            aria-label="Bajar contenido"
+            onClick={scrollAbajo}
+            title="Bajar"
+          >
+            <ArrowDown size={28} />
+          </button>		  
         </div>
       </div>
     </main>

@@ -7,7 +7,7 @@ export default function Header() {
       {/* Marca / Logo */}
       <div className="header-brand">
         <div className="header-logo-placeholder">[Logo]</div>
-        <span className="header-title">Nombre de la Página</span>
+        <span className="header-title">Noticias Accesibles</span>
       </div>
 
       {/* Barra de Búsqueda Superior */}

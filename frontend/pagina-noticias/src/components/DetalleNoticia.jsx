@@ -1,6 +1,8 @@
 import { useEffect, useRef } from 'react';
-import { ArrowUp, ArrowDown, Volume2, ChevronUp, ChevronDown } from 'lucide-react';
+import { ArrowUp, ArrowDown, ChevronUp, ChevronDown } from 'lucide-react';
 import '../styles/DetalleNoticia.css';
+import TextToSpeechButton from './TextToSpeechButton';
+
 
 export default function DetalleNoticia({ noticia, onVolver }) {
   const textoContainerRef = useRef(null);
@@ -14,18 +16,6 @@ export default function DetalleNoticia({ noticia, onVolver }) {
   const textoCompleto = Array.isArray(noticia.contenido)
     ? noticia.contenido.join(' ')
     : noticia.contenido;
-
-  const handleEscucharNoticia = () => {
-    if ('speechSynthesis' in window) {
-      window.speechSynthesis.cancel();
-      const mensaje = new SpeechSynthesisUtterance(`${noticia.nombre}. ${textoCompleto}`);
-      mensaje.lang = 'es-ES';
-      mensaje.rate = 0.9;
-      window.speechSynthesis.speak(mensaje);
-    } else {
-      alert('La síntesis de voz no está soportada en este navegador.');
-    }
-  };
 
   const scrollTextoAbajo = () => {
     if (textoContainerRef.current) {
@@ -57,10 +47,9 @@ export default function DetalleNoticia({ noticia, onVolver }) {
         <button className="btn-verde btn-volver" onClick={onVolver}>
           Volver al Catálogo
         </button>
-
-        <button className="btn-verde btn-escuchar" onClick={handleEscucharNoticia}>
-          <Volume2 size={24} /> Escuchar Noticia
-        </button>
+		
+		<TextToSpeechButton text={`${noticia.nombre}. ${textoCompleto}`}/>
+		
       </div>
 
       {/* Grid Principal con Flechas Globales al Costado */}

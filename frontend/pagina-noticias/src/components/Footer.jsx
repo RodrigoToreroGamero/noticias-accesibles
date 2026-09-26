@@ -6,7 +6,7 @@ export default function Footer() {
         <div className="footer-info">
           <h4>Portal de Noticias Accesible</h4>
           <p><b>Curso:</b> Interacción Hombre-Máquina</p>
-          <p><b>Desarrolladores:</b> Luis Guillermo Solidoro Cueto & Juan Rodrigo Torero</p>
+          <p><b>Desarrolladores:</b> Luis Guillermo Solidoro Cueto & Juan Rodrigo Torero Gamero</p>
         </div>
 
         <div className="footer-accessibility">

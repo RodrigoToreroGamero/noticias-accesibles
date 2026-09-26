@@ -4,6 +4,7 @@ const defaultConfig = {
 };
 
 var config = { ...defaultConfig };
+const synth = window.speechSynthesis;
 
 export function setTextToSpeechConfig(newConfig) {
 	try {
@@ -19,7 +20,7 @@ export function getTextToSpeechConfig() {
 }
 
 export function speak(text) {
-	try {
+	try {		
 		const utterance = new SpeechSynthesisUtterance(text);
 		utterance.lang = config.lang;
 		
@@ -27,10 +28,15 @@ export function speak(text) {
 			utterance.voice = config.voice;
 		}
 		
-		window.speechSynthesis.speak(utterance);
+		synth.speak(utterance);
 	} catch(ex) {
 		console.error(ex.message);
+		alert('La síntesis de voz no está soportada en este navegador.');
 	}	
+}
+
+export function stopSpeaking() {
+	synth.cancel();
 }
 
 export function getVoices() {
