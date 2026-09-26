@@ -1,0 +1,144 @@
+/* --- CATÁLOGO DEPORTES CON CARDS DEL INICIO --- */
+.catalogo-container {
+  max-width: 1050px;
+  margin: 25px auto;
+  padding: 0 20px;
+}
+
+.catalogo-top-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;     
+  margin-bottom: 25px;
+  width: 100%;
+}
+
+.btn-volver {
+  background-color: var(--primary-green);
+  color: white;
+  border: none;
+  padding: 14px 24px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  border-radius: 12px;
+  cursor: pointer;
+}
+
+.catalogo-titulo {
+  flex-grow: 1;
+  text-align: center;
+  font-size: 1.8rem;
+  margin: 0;
+  font-style: italic;
+}
+
+/* Buscador en Catálogo */
+.search-section-catalogo {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 35px;
+}
+
+.search-label {
+  font-weight: bold;
+  font-size: 1.2rem;
+  white-space: nowrap;
+}
+
+.search-box-group {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  flex-grow: 1;
+}
+
+.search-input-wrapper {
+  display: flex;
+  align-items: center;
+  background-color: #e0e0e0;
+  border-radius: 25px;
+  padding: 8px 18px;
+  flex-grow: 1;
+}
+
+.catalogo-input {
+  border: none;
+  background: transparent;
+  outline: none;
+  width: 100%;
+  font-size: 1.1rem;
+  margin: 0 10px;
+}
+
+.btn-buscar {
+  background-color: var(--primary-green);
+  color: white;
+  border: none;
+  padding: 12px 30px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  border-radius: 12px;
+  cursor: pointer;
+}
+
+/* Disposición de la Grilla del Catálogo */
+.catalogo-grid-wrapper {
+  display: flex;
+  align-items: flex-start;
+  gap: 25px;
+  position: relative;
+}
+
+.catalogo-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 35px;
+  flex-grow: 1;
+}
+
+/* Extensión de la Card para hacerlo 100% clickeable en el catálogo */
+.card-catalogo-clickable {
+  width: 100%; 
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.card-catalogo-clickable:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+.card-catalogo-clickable .card-button {
+  pointer-events: none; 
+}
+
+.nav-arrows-column {
+  display: flex;
+  flex-direction: column;
+  gap: 20px; 
+  position: sticky;
+  top: 40vh;
+  align-self: flex-start;
+}
+
+.nav-arrow-btn {
+  background-color: #ffffff;
+  border: 2px solid #aaa;
+  border-radius: 14px;
+  width: 56px;
+  height: 56px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.12);
+  color: #111;
+  transition: background-color 0.15s ease, transform 0.15s ease;
+}
+
+.nav-arrow-btn:hover {
+  background-color: #f0f0f0;
+  transform: scale(1.05);
+}

@@ -1,0 +1,178 @@
+.detalle-noticia-container {
+  max-width: 1200px;
+  margin: 30px auto;
+  padding: 0 20px;
+}
+
+.detalle-titulo {
+  text-align: center;
+  font-size: 2.4rem;
+  font-weight: bold;
+  font-style: italic;
+  margin-bottom: 25px;
+  color: #000;
+}
+
+/* Barra de Botones Superiores */
+.detalle-actions-bar {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  position: relative;
+  margin-bottom: 30px;
+}
+
+/* Estilo unificado de botones Verdes */
+.btn-verde {
+  color: #ffffff;
+  border: none;
+  font-weight: bold;
+  border-radius: 12px;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0, 168, 45, 0.25);
+  transition: background-color 0.15s ease, transform 0.15s ease;
+}
+
+.btn-verde:hover {
+  background-color: #008f26;
+  transform: scale(1.02);
+}
+
+.btn-volver {
+  padding: 14px 28px;
+  font-size: 1.2rem;
+}
+
+.btn-escuchar {
+  background-color: #0088ff; /* Color azul base */
+  color: #ffffff;
+  border: none;
+  padding: 14px 32px;
+  font-size: 1.25rem;
+  font-weight: bold;
+  border-radius: 14px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0 auto;
+  box-shadow: 0 4px 10px rgba(0, 136, 255, 0.3);
+  /* Transición suave al pasar el cursor */
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+/* Estado cuando el cursor pasa por encima (:hover) */
+.btn-escuchar:hover {
+  background-color: #005bb5; /* Personaliza aquí el color de hover (ej. un azul más oscuro) */
+  transform: scale(1.03); /* Ligero aumento de tamaño para feedback visual */
+  box-shadow: 0 6px 14px rgba(0, 136, 255, 0.4);
+}
+
+
+/* Contenedor principal con flechas globales a la derecha */
+.detalle-layout-wrapper {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+}
+
+.detalle-grid {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 25px;
+}
+
+.detalle-card-box {
+  background-color: #dcdcdc;
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.imagen-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 440px;
+}
+
+.detalle-imagen {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+/* Caja de Texto */
+.texto-box-wrapper {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  height: 440px;
+}
+
+.texto-box {
+  flex: 1;
+  height: 100%;
+  overflow-y: auto;
+  scroll-behavior: smooth;
+  box-sizing: border-box;
+}
+
+.detalle-parrafo {
+  font-size: 1.35rem;
+  line-height: 1.7;
+  color: #111;
+  margin-bottom: 16px;
+}
+
+/* Botones para desplazar el texto interno */
+.texto-nav-arrows {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.btn-arrow-small {
+  background-color: #ffffff;
+  border: 2px solid #bbb;
+  border-radius: 10px;
+  width: 42px;
+  height: 42px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #333;
+}
+
+.btn-arrow-small:hover {
+  background-color: #e8e8e8;
+}
+
+/* Botones laterales para desplazar toda la página */
+.nav-arrows-column {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.nav-arrow-btn {
+  background-color: #00a600;
+  border: 2px solid #aaa;
+  border-radius: 14px;
+  width: 56px;
+  height: 56px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.12);
+  color: #fff;
+}
+
+.nav-arrow-btn:hover {
+  background-color: #f0f0f0;
+  color: #000;
+}
