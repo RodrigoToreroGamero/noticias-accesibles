@@ -85,3 +85,77 @@
 .header-user-btn:hover {
   transform: scale(1.05);
 }
+
+/* --- ESTILOS DE MODO OSCURO GLOBAL --- */
+
+/* Contenedor Base en Modo Oscuro */
+.app-container.dark-theme {
+  background-color: #121212;
+  color: #ffffff;
+  min-height: 100vh;
+}
+
+/* Cambios en Títulos y Textos Generales */
+.dark-theme .catalogo-titulo,
+.dark-theme .detalle-titulo,
+.dark-theme .search-label {
+  color: #ffffff;
+}
+
+/* Cajas de Noticias y Tarjetas en Fondo Oscuro */
+.dark-theme .detalle-card-box,
+.dark-theme .card {
+  background-color: #242424;
+  color: #ffffff;
+  box-shadow: 0 4px 12px rgba(255, 255, 255, 0.05);
+}
+
+.dark-theme .detalle-parrafo {
+  color: #f0f0f0;
+}
+
+/* Ajuste de Botones de Navegación (Flechas) */
+.dark-theme .nav-arrow-btn,
+.dark-theme .btn-arrow-small {
+  background-color: #333333;
+  border-color: #666666;
+  color: #ffffff;
+}
+
+.dark-theme .nav-arrow-btn:hover,
+.dark-theme .btn-arrow-small:hover {
+  background-color: #444444;
+}
+
+/* Ajuste de Inputs e Interfaz de Búsqueda */
+.dark-theme .search-input-wrapper {
+  background-color: #2a2a2a;
+}
+
+.dark-theme .catalogo-input {
+  color: #ffffff;
+}
+
+.header-right-actions {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.header-theme-btn {
+  background-color: #ffffff;
+  border: none;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  transition: transform 0.15s ease;
+}
+
+.header-theme-btn:hover {
+  transform: scale(1.08);
+}

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Header from './components/Header';
 import BanerBienvenida from './components/BanerBienvenida';
 import Carrusel from './components/Carrusel';
@@ -22,6 +22,20 @@ export default function App() {
   let itemsVista = [];
   let textoBotonVolver = 'Volver al Inicio';
   let accionVolver = () => setCategoriaActual(null);
+
+  const [darkMode, setDarkMode] = useState(false);
+
+  const toggleTheme = () => {
+    setDarkMode((prevMode) => !prevMode);
+  };
+
+  useEffect(() => {
+    if (darkMode) {
+      document.body.classList.add('dark-theme');
+    } else {
+      document.body.classList.remove('dark-theme');
+    }
+  }, [darkMode]);
   
   stopSpeaking();	
 
@@ -49,8 +63,8 @@ export default function App() {
   };
 
   return (
-    <div>
-      <Header />
+    <div className='app-container'>
+      <Header darkMode={darkMode} onToggleTheme={toggleTheme}/>
 
       {/* NIVEL 1: INICIO */}
       {!categoriaActual && (

@@ -26,3 +26,53 @@ body {
   font-size: 1.2rem;
   margin-top: 0;
 }
+
+/* Fondo general de la página */
+body.dark-theme {
+  background-color: #121212 !important;
+  color: #ffffff !important;
+}
+
+/* Títulos principales y etiquetas */
+body.dark-theme .catalogo-titulo,
+body.dark-theme .detalle-titulo,
+body.dark-theme .search-label,
+body.dark-theme h1, 
+body.dark-theme h2, 
+body.dark-theme p {
+  color: #ffffff;
+}
+
+/* Tarjetas y cajas de texto */
+body.dark-theme .detalle-card-box,
+body.dark-theme .card {
+  background-color: #222222;
+  color: #ffffff;
+  box-shadow: 0 4px 12px rgba(255, 255, 255, 0.08);
+}
+
+body.dark-theme .detalle-parrafo {
+  color: #e0e0e0;
+}
+
+/* Botones de navegación (Flechas) */
+body.dark-theme .nav-arrow-btn,
+body.dark-theme .btn-arrow-small {
+  background-color: #2d2d2d;
+  border-color: #555555;
+  color: #ffffff;
+}
+
+body.dark-theme .nav-arrow-btn:hover,
+body.dark-theme .btn-arrow-small:hover {
+  background-color: #3d3d3d;
+}
+
+/* Barra de Búsqueda */
+body.dark-theme .search-input-wrapper {
+  background-color: #2a2a2a;
+}
+
+body.dark-theme .catalogo-input {
+  color: #ffffff;
+}
