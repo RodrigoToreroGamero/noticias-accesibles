@@ -10,7 +10,7 @@ export default function TextToSpeechButton({ text }) {
 	return (
 		isSpeaking ? (
 			<button 
-				className="btn-verde btn-escuchar" 
+				className="btn-escuchar btn-detener-escuchar" 
 				onClick={() => {
 					stopSpeaking();
 					setIsSpeaking(false);
@@ -20,7 +20,7 @@ export default function TextToSpeechButton({ text }) {
 			</button>
 		) : (
 			<button 
-				className="btn-verde btn-escuchar" 
+				className="btn-escuchar" 
 				onClick={() => {
 					speak(text);
 					setIsSpeaking(true);

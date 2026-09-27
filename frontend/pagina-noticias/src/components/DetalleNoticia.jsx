@@ -2,7 +2,7 @@ import { useEffect, useRef } from 'react';
 import { ArrowUp, ArrowDown, ChevronUp, ChevronDown } from 'lucide-react';
 import '../styles/DetalleNoticia.css';
 import TextToSpeechButton from './TextToSpeechButton';
-
+import { stopSpeaking } from '../services/textToSpeech';
 
 export default function DetalleNoticia({ noticia, onVolver }) {
   const textoContainerRef = useRef(null);
@@ -44,7 +44,12 @@ export default function DetalleNoticia({ noticia, onVolver }) {
 
       {/* Barra de Acciones Superior (Botonera alineada según boceto) */}
       <div className="detalle-actions-bar">
-        <button className="btn-verde btn-volver" onClick={onVolver}>
+        <button className="btn-verde btn-volver" 
+			onClick={() => {
+				stopSpeaking();
+				onVolver();				
+			}}
+		>
           Volver al Catálogo
         </button>
 		

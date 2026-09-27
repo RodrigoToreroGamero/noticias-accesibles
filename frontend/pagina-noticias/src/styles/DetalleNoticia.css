@@ -68,6 +68,16 @@
   box-shadow: 0 6px 14px rgba(0, 136, 255, 0.4);
 }
 
+.btn-detener-escuchar {
+	background-color: #ff0500;
+}
+
+.btn-detener-escuchar:hover {
+  background-color: #b50005; /* Personaliza aquí el color de hover (ej. un azul más oscuro) */
+  transform: scale(1.03); /* Ligero aumento de tamaño para feedback visual */
+  box-shadow: 0 6px 14px rgba(0, 136, 255, 0.4);
+}
+
 
 /* Contenedor principal con flechas globales a la derecha */
 .detalle-layout-wrapper {
