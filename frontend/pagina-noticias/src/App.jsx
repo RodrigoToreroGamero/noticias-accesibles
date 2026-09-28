@@ -10,8 +10,6 @@ import { CATALOGOS_DATA } from './data/catalogos';
 import { NOTICIAS_POR_SUBDISCIPLINA } from './data/noticias';
 import './styles/App.css';
 
-
-
 export default function App() {
   const [categoriaActual, setCategoriaActual] = useState(null);
   const [subcategoriaActual, setSubcategoriaActual] = useState(null);
@@ -43,18 +41,19 @@ export default function App() {
 
   //Aumentar y disminuir tamaño de fuente de letra
   const aumentarFuente = () => {
-    if (fontSize === 'normal') setFontSize('grande');
-    else if (fontSize === 'grande') setFontSize('extra-grande');
-  };
+  if (fontSize === 'normal') setFontSize('grande');
+  else if (fontSize === 'grande') setFontSize('extra-grande');
+};
 
-  const disminuirFuente = () => {
-    if (fontSize === 'extra-grande') setFontSize('grande');
-    else if (fontSize === 'grande') setFontSize('normal');
-  };
-  
+const disminuirFuente = () => {
+  if (fontSize === 'extra-grande') setFontSize('grande');
+  else if (fontSize === 'grande') setFontSize('normal');
+};
+
   useEffect(() => {
-    document.body.classList.remove('font-normal', 'font-grande', 'font-extra-grande');
-    document.body.classList.add(`font-${fontSize}`);
+    const root = document.documentElement;
+    root.classList.remove('font-normal', 'font-grande', 'font-extra-grande');
+    root.classList.add(`font-${fontSize}`);
   }, [fontSize]);
   	
 
