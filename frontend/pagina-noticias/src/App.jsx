@@ -25,6 +25,10 @@ export default function App() {
 
   const [darkMode, setDarkMode] = useState(false);
 
+  const [fontSize, setFontSize] = useState('normal');
+
+  const [busqueda, setBusqueda] = useState('');
+
   const toggleTheme = () => {
     setDarkMode((prevMode) => !prevMode);
   };
@@ -36,7 +40,22 @@ export default function App() {
       document.body.classList.remove('dark-theme');
     }
   }, [darkMode]);
+
+  //Aumentar y disminuir tamaño de fuente de letra
+  const aumentarFuente = () => {
+    if (fontSize === 'normal') setFontSize('grande');
+    else if (fontSize === 'grande') setFontSize('extra-grande');
+  };
+
+  const disminuirFuente = () => {
+    if (fontSize === 'extra-grande') setFontSize('grande');
+    else if (fontSize === 'grande') setFontSize('normal');
+  };
   
+  useEffect(() => {
+    document.body.classList.remove('font-normal', 'font-grande', 'font-extra-grande');
+    document.body.classList.add(`font-${fontSize}`);
+  }, [fontSize]);
   	
 
   if (subcategoriaActual) {
@@ -64,7 +83,9 @@ export default function App() {
 
   return (
     <div className='app-container'>
-      <Header darkMode={darkMode} onToggleTheme={toggleTheme}/>
+      <Header darkMode={darkMode} onToggleTheme={toggleTheme} fontSize={fontSize} 
+      onAumentarFuente={aumentarFuente} 
+      onDisminuirFuente={disminuirFuente} busqueda={busqueda} setBusqueda={setBusqueda}/>
 
       {/* NIVEL 1: INICIO */}
       {!categoriaActual && (

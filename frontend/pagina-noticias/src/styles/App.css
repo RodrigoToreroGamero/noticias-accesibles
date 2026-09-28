@@ -76,3 +76,46 @@ body.dark-theme .search-input-wrapper {
 body.dark-theme .catalogo-input {
   color: #ffffff;
 }
+
+/* --- ESCALADO DE TAMAÑO DE FUENTE --- */
+
+/* Normal (Base por defecto) */
+body.font-normal {
+  font-size: 16px;
+}
+
+/* Grande (+15% escala de texto) */
+body.font-grande {
+  font-size: 18px;
+}
+
+body.font-grande h1,
+body.font-grande .catalogo-titulo,
+body.font-grande .detalle-titulo {
+  font-size: 2.2rem;
+}
+
+body.font-grande p,
+body.font-grande .detalle-parrafo,
+body.font-grande .search-label,
+body.font-grande .btn-escuchar {
+  font-size: 1.35rem;
+}
+
+/* Extra Grande (+30% escala de texto) */
+body.font-extra-grande {
+  font-size: 20px;
+}
+
+body.font-extra-grande h1,
+body.font-extra-grande .catalogo-titulo,
+body.font-extra-grande .detalle-titulo {
+  font-size: 2.5rem;
+}
+
+body.font-extra-grande p,
+body.font-extra-grande .detalle-parrafo,
+body.font-extra-grande .search-label,
+body.font-extra-grande .btn-escuchar {
+  font-size: 1.5rem;
+}

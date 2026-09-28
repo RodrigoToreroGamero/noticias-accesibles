@@ -142,3 +142,40 @@
   background-color: #f0f0f0;
   transform: scale(1.05);
 }
+
+/* Botón transparente para el micrófono dentro del input */
+.mic-btn-action {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px;
+  border-radius: 50%;
+  transition: transform 0.15s ease;
+}
+
+.mic-btn-action:hover {
+  transform: scale(1.15);
+}
+
+/* Feedback en rojo intermitente mientras escucha el micrófono */
+.mic-btn-action.escuchando-anim {
+  animation: pulso-mic 1.2s infinite ease-in-out;
+}
+
+@keyframes pulso-mic {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.25);
+    opacity: 0.6;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
