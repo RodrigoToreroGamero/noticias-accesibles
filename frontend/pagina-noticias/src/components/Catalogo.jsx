@@ -45,7 +45,11 @@ export default function Catalogo({
     <main className="catalogo-container">
       {/* Barra superior con botón Volver y Título Centrado */}
       <div className="catalogo-top-bar">
-        <button className="btn-verde btn-volver" onClick={onVolver}>
+        <button className="btn-verde btn-volver" onClick={() => {
+				onVolver();
+				setBusqueda("");
+			}}		
+		>
           {textoBotonVolver}
         </button>
         <h1 className="catalogo-titulo">{titulo}</h1>
