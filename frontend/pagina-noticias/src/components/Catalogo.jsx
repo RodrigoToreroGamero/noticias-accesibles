@@ -89,7 +89,10 @@ export default function Catalogo({
             <div
               key={item.id}
               className="card card-catalogo-clickable"
-              onClick={() => onSelectCard && onSelectCard(item)}
+              onClick={() => {
+				  onSelectCard && onSelectCard(item);
+				  setBusqueda("");
+			  }}
               role="button"
               tabIndex={0}
             >
