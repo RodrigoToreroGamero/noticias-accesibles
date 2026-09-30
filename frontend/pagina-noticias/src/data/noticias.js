@@ -164,6 +164,24 @@ export const NOTICIAS_POR_SUBDISCIPLINA = {
         'Durante la prueba de salto largo se registraron marcas sobresalientes que aseguran clasificaciones a torneos regionales.',
         'Los entrenadores destacaron la preparación técnica y la mejora física mostrada por los atletas esta temporada.'
       ]
+    },
+    {
+      id: 'atl-3',
+      nombre: 'Nuevas Marcas en Salto de Longitud',
+      imagen: 'https://images.unsplash.com/photo-1552674605-db6ffd4facb5?w=800',
+      contenido: [
+        'Durante la prueba de salto largo se registraron marcas sobresalientes que aseguran clasificaciones a torneos regionales.',
+        'Los entrenadores destacaron la preparación técnica y la mejora física mostrada por los atletas esta temporada.'
+      ]
+    },
+    {
+      id: 'atl-4',
+      nombre: 'Nuevas Marcas en Salto de Longitud',
+      imagen: 'https://images.unsplash.com/photo-1552674605-db6ffd4facb5?w=800',
+      contenido: [
+        'Durante la prueba de salto largo se registraron marcas sobresalientes que aseguran clasificaciones a torneos regionales.',
+        'Los entrenadores destacaron la preparación técnica y la mejora física mostrada por los atletas esta temporada.'
+      ]
     }
   ],
 
