@@ -10,18 +10,56 @@ export default function Catalogo({
   onSelectCard
 }) {
   const [busqueda, setBusqueda] = useState('');
+  const [escuchando, setEscuchando] = useState(false);
 
-  // Subir automáticamente al tope cuando cambia la vista o título del catálogo
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [titulo]);
+
+  // Función para activar el reconocimiento de voz
+  const activarMicrofono = () => {
+    const SpeechRecognition =
+      window.SpeechRecognition || window.webkitSpeechRecognition;
+
+    if (!SpeechRecognition) {
+      alert('Tu navegador no soporta el reconocimiento de voz.');
+      return;
+    }
+
+    const recognition = new SpeechRecognition();
+    recognition.lang = 'es-ES'; // Idioma en español
+    recognition.continuous = false;
+    recognition.interimResults = false;
+
+    recognition.onstart = () => {
+      setEscuchando(true);
+    };
+
+    recognition.onresult = (event) => {
+      const textoDictado = event.results[0][0].transcript;
+      // Quitamos el punto final que suele agregar el navegador automáticamente
+      const textoLimpio = textoDictado.replace(/\.$/, '');
+      setBusqueda(textoLimpio);
+      setEscuchando(false);
+    };
+
+    recognition.onerror = () => {
+      setEscuchando(false);
+    };
+
+    recognition.onend = () => {
+      setEscuchando(false);
+    };
+
+    recognition.start();
+  };
 
   const elementosFiltrados = subcategorias.filter((item) =>
     item.nombre.toLowerCase().includes(busqueda.toLowerCase())
   );
 
   const scrollAbajo = () => {
-    window.scrollBy({ top: 550, behavior: 'smooth' });
+    window.scrollBy({ top: 500, behavior: 'smooth' });
   };
 
   const scrollArriba = () => {
@@ -30,7 +68,7 @@ export default function Catalogo({
 
   return (
     <main className="catalogo-container">
-      {/* Barra superior con botón Volver y Título Dinámico */}
+      {/* Barra superior con botón Volver y Título Centrado */}
       <div className="catalogo-top-bar">
         <button className="btn-verde btn-volver" onClick={onVolver}>
           {textoBotonVolver}
@@ -38,7 +76,7 @@ export default function Catalogo({
         <h1 className="catalogo-titulo">{titulo}</h1>
       </div>
 
-      {/* Buscador general */}
+      {/* Buscador general con dictado de voz */}
       <div className="search-section-catalogo">
         <label htmlFor="search-input" className="search-label">
           Buscar por nombre
@@ -50,10 +88,19 @@ export default function Catalogo({
               id="search-input"
               type="text"
               value={busqueda}
+              placeholder={escuchando ? 'Escuchando tu voz...' : ''}
               onChange={(e) => setBusqueda(e.target.value)}
               className="catalogo-input"
             />
-            <Mic className="mic-icon" size={24} color="#000" />
+            <button
+              type="button"
+              className={`mic-btn-action ${escuchando ? 'escuchando-anim' : ''}`}
+              onClick={activarMicrofono}
+              title="Presiona para hablar"
+              aria-label="Buscar por voz"
+            >
+              <Mic size={24} color={escuchando ? '#ff0000' : '#0088ff'} />
+            </button>
           </div>
           <button className="btn-verde btn-buscar">Buscar</button>
         </div>
@@ -77,8 +124,18 @@ export default function Catalogo({
           ))}
         </div>
 
-        {/* Columna de Flechas alineada con las filas */}
-        <div className="nav-arrows-column">          
+        {/* Columna de Flechas pegajosa */}
+        <div className="nav-arrows-column">
+          <button
+            type="button"
+            className="nav-arrow-btn"
+            aria-label="Bajar contenido"
+            onClick={scrollAbajo}
+            title="Bajar"
+          >
+            <ArrowDown size={28} />
+          </button>
+
           <button
             type="button"
             className="nav-arrow-btn"
@@ -88,16 +145,6 @@ export default function Catalogo({
           >
             <ArrowUp size={28} />
           </button>
-		  
-		  <button
-            type="button"
-            className="nav-arrow-btn"
-            aria-label="Bajar contenido"
-            onClick={scrollAbajo}
-            title="Bajar"
-          >
-            <ArrowDown size={28} />
-          </button>		  
         </div>
       </div>
     </main>

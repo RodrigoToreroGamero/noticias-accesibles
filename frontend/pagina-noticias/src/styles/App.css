@@ -76,3 +76,31 @@ body.dark-theme .search-input-wrapper {
 body.dark-theme .catalogo-input {
   color: #ffffff;
 }
+
+/* --- ESCALADO GLOBAL DE FUENTE (Aplica a TODA la página) --- */
+
+/* Tamaño Base Normal (100% / 16px) */
+html.font-normal {
+  font-size: 16px;
+}
+
+/* Tamaño Grande (Aumenta un 20% absolutamente todo en la página) */
+html.font-grande {
+  font-size: 19.2px; /* 120% del tamaño base */
+}
+
+/* Tamaño Extra Grande (Aumenta un 40% absolutamente todo en la página) */
+html.font-extra-grande {
+  font-size: 22.4px; /* 140% del tamaño base */
+}
+
+/* Regla de respaldo para garantizar que párrafos, botones, inputs y títulos 
+   hereden el tamaño relativo (rem) del html */
+body, 
+input, 
+button, 
+select, 
+textarea, 
+h1, h2, h3, h4, h5, h6, p, span, a, label {
+  transition: font-size 0.2s ease;
+}

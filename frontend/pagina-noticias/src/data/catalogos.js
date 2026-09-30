@@ -2,9 +2,9 @@ export const CATALOGOS_DATA = {
   deportes: {
     titulo: 'Noticias Sobre Deportes',
     subcategorias: [
-      { id: 'futbol', nombre: 'Futbol', imagen: 'imagenes/imagen1.jpg' },
+      { id: 'futbol', nombre: 'Fútbol', imagen: 'imagenes/imagen1.jpg' },
       { id: 'tenis', nombre: 'Tenis', imagen: 'imagenes/imagen2.jpg' },
-      { id: 'f1', nombre: 'Formula 1', imagen: 'imagenes/imagen3.jpg'},
+      { id: 'f1', nombre: 'Fórmula 1', imagen: 'imagenes/imagen3.jpg'},
       { id: 'atletismo', nombre: 'Atletismo', imagen: 'imagenes/imagen4.jpg' },
       { id: 'basket', nombre: 'Basket', imagen: 'imagenes/imagen5.jpg' },
       { id: 'ciclismo', nombre: 'Ciclismo', imagen: 'imagenes/imagen6.jpg' }

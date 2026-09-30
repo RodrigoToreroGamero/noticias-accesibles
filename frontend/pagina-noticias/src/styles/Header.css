@@ -159,3 +159,54 @@
 .header-theme-btn:hover {
   transform: scale(1.08);
 }
+
+/* Grupo de botones A- / A+ */
+.font-size-controls {
+  display: flex;
+  align-items: center;
+  background-color: #ffffff;
+  border-radius: 25px;
+  padding: 3px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+.btn-font-scale {
+  background: transparent;
+  border: none;
+  font-weight: bold;
+  font-size: 1.1rem;
+  padding: 8px 14px;
+  cursor: pointer;
+  color: #111111;
+  border-radius: 20px;
+  transition: background-color 0.15s ease;
+}
+
+.btn-font-scale:hover:not(:disabled) {
+  background-color: #e0e0e0;
+}
+
+.btn-font-scale:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+/* Feedback visual cuando el micrófono del Header está escuchando */
+.header-mic-btn.escuchando-anim {
+  animation: pulso-mic 1.2s infinite ease-in-out;
+}
+
+@keyframes pulso-mic {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.25);
+    opacity: 0.6;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
