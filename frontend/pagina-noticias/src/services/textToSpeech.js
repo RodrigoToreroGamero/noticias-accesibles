@@ -19,7 +19,7 @@ export function getTextToSpeechConfig() {
 	return config;
 }
 
-export function speak(text) {
+export function speak(text, onEnd) {
 	try {		
 		const utterance = new SpeechSynthesisUtterance(text);
 		utterance.lang = config.lang;
@@ -28,10 +28,25 @@ export function speak(text) {
 			utterance.voice = config.voice;
 		}
 		
+		utterance.onend = () => {
+			if(onEnd) {
+				onEnd();
+			}
+		};
+		
+		utterance.onerror = () => {
+			if(onEnd) {
+				onEnd();
+			}
+		};
+		
 		synth.speak(utterance);
 	} catch(ex) {
 		console.error(ex.message);
 		alert('La síntesis de voz no está soportada en este navegador.');
+		if(onEnd) {
+			onEnd();
+		}
 	}	
 }
 
