@@ -30,9 +30,8 @@ export default function Catalogo({
 	});
   };	   
 
-  const elementosFiltrados = subcategorias.filter((item) =>
-    item.nombre.toLowerCase().includes(busqueda.toLowerCase())
-  );
+  const elementosFiltrados = (subcategorias || []).filter((item) =>
+    (item?.nombre || '').toLowerCase().includes(busqueda.toLowerCase()));
 
   const scrollAbajo = () => {
     window.scrollBy({ top: 500, behavior: 'smooth' });
