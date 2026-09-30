@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { ArrowDown, ArrowUp, Search, Mic } from 'lucide-react';
 import '../styles/Catalogo.css';
+import { startVoiceRecognition } from '../services/voiceCommandsConfig';
 
 export default function Catalogo({
   titulo,
@@ -17,42 +18,17 @@ export default function Catalogo({
   }, [titulo]);
 
   // Función para activar el reconocimiento de voz
-  const activarMicrofono = () => {
-    const SpeechRecognition =
-      window.SpeechRecognition || window.webkitSpeechRecognition;
-
-    if (!SpeechRecognition) {
-      alert('Tu navegador no soporta el reconocimiento de voz.');
-      return;
-    }
-
-    const recognition = new SpeechRecognition();
-    recognition.lang = 'es-ES'; // Idioma en español
-    recognition.continuous = false;
-    recognition.interimResults = false;
-
-    recognition.onstart = () => {
-      setEscuchando(true);
-    };
-
-    recognition.onresult = (event) => {
-      const textoDictado = event.results[0][0].transcript;
-      // Quitamos el punto final que suele agregar el navegador automáticamente
-      const textoLimpio = textoDictado.replace(/\.$/, '');
-      setBusqueda(textoLimpio);
-      setEscuchando(false);
-    };
-
-    recognition.onerror = () => {
-      setEscuchando(false);
-    };
-
-    recognition.onend = () => {
-      setEscuchando(false);
-    };
-
-    recognition.start();
-  };
+  const activarMicrofono = () => {	  
+	startVoiceRecognition({
+		onStart: () => setEscuchando(true),
+		onResult: (texto) => {
+			setEscuchando(false);
+			setBusqueda(texto);
+		},
+		onError: () => setEscuchando(false),
+		onEnd: () => setEscuchando(false)
+	});
+  };	   
 
   const elementosFiltrados = (subcategorias || []).filter((item) =>
     (item?.nombre || '').toLowerCase().includes(busqueda.toLowerCase()));
@@ -112,7 +88,10 @@ export default function Catalogo({
             <div
               key={item.id}
               className="card card-catalogo-clickable"
-              onClick={() => onSelectCard && onSelectCard(item)}
+              onClick={() => {
+				  onSelectCard && onSelectCard(item);
+				  setBusqueda("");
+			  }}
               role="button"
               tabIndex={0}
             >
