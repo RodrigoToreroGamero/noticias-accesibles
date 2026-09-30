@@ -164,6 +164,24 @@ export const NOTICIAS_POR_SUBDISCIPLINA = {
         'Durante la prueba de salto largo se registraron marcas sobresalientes que aseguran clasificaciones a torneos regionales.',
         'Los entrenadores destacaron la preparación técnica y la mejora física mostrada por los atletas esta temporada.'
       ]
+    },
+    {
+      id: 'atl-3',
+      nombre: 'Nuevas Marcas en Salto de Longitud',
+      imagen: 'https://images.unsplash.com/photo-1552674605-db6ffd4facb5?w=800',
+      contenido: [
+        'Durante la prueba de salto largo se registraron marcas sobresalientes que aseguran clasificaciones a torneos regionales.',
+        'Los entrenadores destacaron la preparación técnica y la mejora física mostrada por los atletas esta temporada.'
+      ]
+    },
+    {
+      id: 'atl-4',
+      nombre: 'Nuevas Marcas en Salto de Longitud',
+      imagen: 'https://images.unsplash.com/photo-1552674605-db6ffd4facb5?w=800',
+      contenido: [
+        'Durante la prueba de salto largo se registraron marcas sobresalientes que aseguran clasificaciones a torneos regionales.',
+        'Los entrenadores destacaron la preparación técnica y la mejora física mostrada por los atletas esta temporada.'
+      ]
     }
   ],
 
@@ -198,6 +216,24 @@ export const NOTICIAS_POR_SUBDISCIPLINA = {
     },
     {
       id: 'mb-3',
+      nombre: 'Inauguración de la Ruta Ciclo-recreativa',
+      imagen: 'https://images.unsplash.com/photo-1471506480208-91b3a4cc78be?w=800',
+      contenido: [
+        'Se habilitó un nuevo circuito natural señalizado para el uso seguro de ciclistas de nivel principiante e intermedio.',
+        'La ruta cuenta con áreas de descanso, puntos de hidratación y facilidades de acceso para personas con movilidad reducida.'
+      ]
+    },
+    {
+      id: 'mb-4',
+      nombre: 'Inauguración de la Ruta Ciclo-recreativa',
+      imagen: 'https://images.unsplash.com/photo-1471506480208-91b3a4cc78be?w=800',
+      contenido: [
+        'Se habilitó un nuevo circuito natural señalizado para el uso seguro de ciclistas de nivel principiante e intermedio.',
+        'La ruta cuenta con áreas de descanso, puntos de hidratación y facilidades de acceso para personas con movilidad reducida.'
+      ]
+    },
+    {
+      id: 'mb-5',
       nombre: 'Inauguración de la Ruta Ciclo-recreativa',
       imagen: 'https://images.unsplash.com/photo-1471506480208-91b3a4cc78be?w=800',
       contenido: [
