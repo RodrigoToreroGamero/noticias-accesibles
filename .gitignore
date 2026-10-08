@@ -9,7 +9,7 @@ node_modules/
 
 # Formatos de Imágenes
 *.png
-*.jpg
+#*.jpg
 *.jpeg
 *.svg
 

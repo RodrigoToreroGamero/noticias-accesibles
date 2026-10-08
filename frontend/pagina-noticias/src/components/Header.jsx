@@ -54,8 +54,12 @@ export default function Header({
     <header className="header-container">
       {/* Marca / Logo */}
       <div className="header-brand">
-        <div className="header-logo-placeholder">[Logo]</div>
-        <span className="header-title">Nombre de la Página</span>
+        <img 
+          src="/brand/logo-noticlara.png" 
+          alt="NotiClara Logo" 
+          className="header-logo-img"
+        />
+        <span className="header-title">NotiClara</span>
       </div>
 
       {/* Barra de Búsqueda Global */}
