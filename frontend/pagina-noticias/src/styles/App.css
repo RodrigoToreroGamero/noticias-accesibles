@@ -104,3 +104,37 @@ textarea,
 h1, h2, h3, h4, h5, h6, p, span, a, label {
   transition: font-size 0.2s ease;
 }
+
+/* Transición suave para todos los elementos al cambiar de tema */
+body, 
+header, 
+footer, 
+.card, 
+button, 
+input {
+  transition: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease;
+}
+
+/* Modo Claro (Por defecto) */
+:root {
+  --bg-principal: #ffffff;
+  --bg-secundario: #f4f6f8;
+  --texto-principal: #222222;
+  --card-bg: #ffffff;
+  --border-color: #e0e0e0;
+}
+
+/* Modo Alto Contraste Suave (Gris carbón en vez de negro puro) */
+body.dark-theme {
+  --bg-principal: #18191a;       /* Gris muy oscuro en lugar de #000000 */
+  --bg-secundario: #242526;     /* Gris medio para tarjetas/bloques */
+  --texto-principal: #f5f6f7;    /* Blanco suave para evitar fatiga visual */
+  --card-bg: #242526;
+  --border-color: #3a3b3c;
+}
+
+/* Aplicamos las variables al body */
+body {
+  background-color: var(--bg-principal);
+  color: var(--texto-principal);
+}
