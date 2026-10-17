@@ -9,11 +9,11 @@ export default function Header({
   onAumentarFuente,
   onDisminuirFuente,
   busqueda,
-  setBusqueda
+  setBusqueda,
+  mostrarBusqueda = true // <-- Nueva prop con valor por defecto
 }) {
   const [escuchando, setEscuchando] = useState(false);
 
-  // Reconocimiento de voz nativo en el Header
   const activarMicrofonoHeader = () => {
     const SpeechRecognition =
       window.SpeechRecognition || window.webkitSpeechRecognition;
@@ -39,13 +39,8 @@ export default function Header({
       setEscuchando(false);
     };
 
-    recognition.onerror = () => {
-      setEscuchando(false);
-    };
-
-    recognition.onend = () => {
-      setEscuchando(false);
-    };
+    recognition.onerror = () => setEscuchando(false);
+    recognition.onend = () => setEscuchando(false);
 
     recognition.start();
   };
@@ -62,27 +57,29 @@ export default function Header({
         <span className="header-title">NotiClara</span>
       </div>
 
-      {/* Barra de Búsqueda Global */}
-      <div className="header-search-box">
-        <Search className="header-icon-search" size={22} color="#555" />
-        <input
-          type="text"
-          value={busqueda || ''}
-          placeholder={escuchando ? 'Escuchando tu voz...' : 'Buscar...'}
-          onChange={(e) => setBusqueda && setBusqueda(e.target.value)}
-          className="header-search-input"
-          aria-label="Buscar"
-        />
-        <button
-          type="button"
-          className={`header-mic-btn ${escuchando ? 'escuchando-anim' : ''}`}
-          onClick={activarMicrofonoHeader}
-          aria-label="Activar micrófono para buscar por voz"
-          title="Buscar por voz"
-        >
-          <Mic size={22} color={escuchando ? '#ff0000' : '#0088ff'} />
-        </button>
-      </div>
+      {/* Barra de Búsqueda Global (Solo se muestra si mostrarBusqueda es true) */}
+      {mostrarBusqueda && (
+        <div className="header-search-box">
+          <Search className="header-icon-search" size={22} color="#555" />
+          <input
+            type="text"
+            value={busqueda || ''}
+            placeholder={escuchando ? 'Escuchando tu voz...' : 'Buscar...'}
+            onChange={(e) => setBusqueda && setBusqueda(e.target.value)}
+            className="header-search-input"
+            aria-label="Buscar"
+          />
+          <button
+            type="button"
+            className={`header-mic-btn ${escuchando ? 'escuchando-anim' : ''}`}
+            onClick={activarMicrofonoHeader}
+            aria-label="Activar micrófono para buscar por voz"
+            title="Buscar por voz"
+          >
+            <Mic size={22} color={escuchando ? '#ff0000' : '#0088ff'} />
+          </button>
+        </div>
+      )}
 
       {/* Controles de Accesibilidad */}
       <div className="header-right-actions">

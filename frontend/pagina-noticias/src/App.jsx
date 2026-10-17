@@ -15,7 +15,6 @@ export default function App() {
   const [subcategoriaActual, setSubcategoriaActual] = useState(null);
   const [noticiaSeleccionada, setNoticiaSeleccionada] = useState(null);
 
-  // Configuración dinámica según el nivel de navegación
   let tituloVista = '';
   let itemsVista = [];
   let textoBotonVolver = 'Volver al Inicio';
@@ -39,30 +38,27 @@ export default function App() {
     }
   }, [darkMode]);
 
-  //Aumentar y disminuir tamaño de fuente de letra
   const aumentarFuente = () => {
-  if (fontSize === 'normal') setFontSize('grande');
-  else if (fontSize === 'grande') setFontSize('extra-grande');
-};
+    if (fontSize === 'normal') setFontSize('grande');
+    else if (fontSize === 'grande') setFontSize('extra-grande');
+  };
 
-const disminuirFuente = () => {
-  if (fontSize === 'extra-grande') setFontSize('grande');
-  else if (fontSize === 'grande') setFontSize('normal');
-};
+  const disminuirFuente = () => {
+    if (fontSize === 'extra-grande') setFontSize('grande');
+    else if (fontSize === 'grande') setFontSize('normal');
+  };
 
   useEffect(() => {
     const root = document.documentElement;
     root.classList.remove('font-normal', 'font-grande', 'font-extra-grande');
     root.classList.add(`font-${fontSize}`);
   }, [fontSize]);
-  	
 
   if (subcategoriaActual) {
     tituloVista = `Noticias de ${subcategoriaActual.toUpperCase()}`;
     itemsVista = NOTICIAS_POR_SUBDISCIPLINA[subcategoriaActual] || [];
     textoBotonVolver = `Volver a ${categoriaActual}`;
     accionVolver = () => setSubcategoriaActual(null);
-    
   } else if (categoriaActual) {
     tituloVista = CATALOGOS_DATA[categoriaActual]?.titulo || 'Catálogo';
     itemsVista = CATALOGOS_DATA[categoriaActual]?.subcategorias || [];
@@ -72,19 +68,24 @@ const disminuirFuente = () => {
 
   const handleSeleccionarCard = (item) => {
     if (!subcategoriaActual) {
-      // Pasamos de Nivel 2 a Nivel 3 (listado de noticias de la subcategoría)
       setSubcategoriaActual(item.id);
     } else {
-      // Pasamos de Nivel 3 a la Lectura Detallada de la Noticia
       setNoticiaSeleccionada(item);
     }
   };
 
   return (
     <div className='app-container'>
-      <Header darkMode={darkMode} onToggleTheme={toggleTheme} fontSize={fontSize} 
-      onAumentarFuente={aumentarFuente} 
-      onDisminuirFuente={disminuirFuente} busqueda={busqueda} setBusqueda={setBusqueda}/>
+      <Header 
+        darkMode={darkMode} 
+        onToggleTheme={toggleTheme} 
+        fontSize={fontSize} 
+        onAumentarFuente={aumentarFuente} 
+        onDisminuirFuente={disminuirFuente} 
+        busqueda={busqueda} 
+        setBusqueda={setBusqueda}
+        mostrarBusqueda={!categoriaActual && !subcategoriaActual && !noticiaSeleccionada}
+      />
 
       {/* NIVEL 1: INICIO */}
       {!categoriaActual && (
@@ -117,4 +118,3 @@ const disminuirFuente = () => {
     </div>
   );
 }
-
