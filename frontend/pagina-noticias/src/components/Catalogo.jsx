@@ -18,17 +18,17 @@ export default function Catalogo({
   }, [titulo]);
 
   // Función para activar el reconocimiento de voz
-  const activarMicrofono = () => {	  
-	startVoiceRecognition({
-		onStart: () => setEscuchando(true),
-		onResult: (texto) => {
-			setEscuchando(false);
-			setBusqueda(texto);
-		},
-		onError: () => setEscuchando(false),
-		onEnd: () => setEscuchando(false)
-	});
-  };	   
+  const activarMicrofono = () => {    
+    startVoiceRecognition({
+      onStart: () => setEscuchando(true),
+      onResult: (texto) => {
+        setEscuchando(false);
+        setBusqueda(texto);
+      },
+      onError: () => setEscuchando(false),
+      onEnd: () => setEscuchando(false)
+    });
+  };     
 
   const elementosFiltrados = (subcategorias || []).filter((item) =>
     (item?.nombre || '').toLowerCase().includes(busqueda.toLowerCase()));
@@ -45,11 +45,13 @@ export default function Catalogo({
     <main className="catalogo-container">
       {/* Barra superior con botón Volver y Título Centrado */}
       <div className="catalogo-top-bar">
-        <button className="btn-verde btn-volver" onClick={() => {
-				onVolver();
-				setBusqueda("");
-			}}		
-		>
+        <button 
+          className="btn-verde btn-volver" 
+          onClick={() => {
+            onVolver();
+            setBusqueda("");
+          }}    
+        >
           {textoBotonVolver}
         </button>
         <h1 className="catalogo-titulo">{titulo}</h1>
@@ -93,9 +95,9 @@ export default function Catalogo({
               key={item.id}
               className="card card-catalogo-clickable"
               onClick={() => {
-				  onSelectCard && onSelectCard(item);
-				  setBusqueda("");
-			  }}
+                onSelectCard && onSelectCard(item);
+                setBusqueda("");
+              }}
               role="button"
               tabIndex={0}
             >
@@ -106,18 +108,8 @@ export default function Catalogo({
           ))}
         </div>
 
-        {/* Columna de Flechas pegajosa */}
+        {/* Columna de Flechas pegajosa (Subir ARRIBA, Bajar ABAJO) */}
         <div className="nav-arrows-column">
-          <button
-            type="button"
-            className="nav-arrow-btn"
-            aria-label="Bajar contenido"
-            onClick={scrollAbajo}
-            title="Bajar"
-          >
-            <ArrowDown size={28} />
-          </button>
-
           <button
             type="button"
             className="nav-arrow-btn"
@@ -126,6 +118,16 @@ export default function Catalogo({
             title="Subir"
           >
             <ArrowUp size={28} />
+          </button>
+
+          <button
+            type="button"
+            className="nav-arrow-btn"
+            aria-label="Bajar contenido"
+            onClick={scrollAbajo}
+            title="Bajar"
+          >
+            <ArrowDown size={28} />
           </button>
         </div>
       </div>

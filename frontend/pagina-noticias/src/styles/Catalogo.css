@@ -8,10 +8,11 @@
 .catalogo-top-bar {
   display: flex;
   align-items: center;
-  justify-content: center;
-  position: relative;     
-  margin-bottom: 25px;
+  justify-content: space-between;
   width: 100%;
+  max-width: 1000px; 
+  margin: 0 auto 1.5rem auto;
+  position: relative;
 }
 
 .btn-volver {
@@ -26,11 +27,11 @@
 }
 
 .catalogo-titulo {
-  flex-grow: 1;
+  width: 100%;
   text-align: center;
-  font-size: 1.8rem;
+  font-size: 2rem;
+  font-weight: 700;
   margin: 0;
-  font-style: italic;
 }
 
 /* Buscador en Catálogo */
