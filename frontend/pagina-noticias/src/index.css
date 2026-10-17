@@ -28,6 +28,11 @@
   @media (max-width: 1024px) {
     font-size: 16px;
   }
+
+  /* Colores oficiales de NotiClara en RGB */
+  --verde-noticlara: rgb(0, 138, 0);
+  --azul-noticlara: rgb(0, 76, 143);
+  --rojo-noticlara: rgb(204, 3, 0);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -108,4 +113,24 @@ code {
   line-height: 135%;
   padding: 4px 8px;
   background: var(--code-bg);
+}
+
+.header-logo-img,
+.footer-logo-img {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%; /* Hace el logo 100% circular */
+  object-fit: cover;
+  background-color: #ffffff;
+  padding: 2px;
+}
+
+.header-container {
+  background-color: var(--verde-noticlara);
+  color: #ffffff;
+}
+
+.footer-container {
+  background-color: var(--verde-noticlara);
+  color: #ffffff;
 }
