@@ -166,17 +166,52 @@
   animation: pulso-mic 1.2s infinite ease-in-out;
 }
 
-@keyframes pulso-mic {
-  0% {
-    transform: scale(1);
-    opacity: 1;
+@media (max-width: 768px) {
+
+  .catalogo-header {
+    display: flex;
+    flex-direction: column-reverse; 
+    align-items: center;
+    text-align: center;
+    gap: 16px;
   }
-  50% {
-    transform: scale(1.25);
-    opacity: 0.6;
+
+  .catalogo-titulo {
+    font-size: 1.8rem;
+    margin: 0;
   }
-  100% {
-    transform: scale(1);
-    opacity: 1;
+
+  .btn-volver-inicio {
+    width: 100%; 
+    max-width: 280px;
+  }
+
+  .search-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+  }
+
+  .search-label {
+    display: none; 
+  }
+
+  .search-input-wrapper {
+    width: 100%; 
+  }
+
+  .catalogo-grid {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+    width: 100%;
+  }
+
+  .card {
+    width: 100%; 
+    max-width: 340px; 
   }
 }
