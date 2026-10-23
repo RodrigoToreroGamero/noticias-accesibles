@@ -2,7 +2,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: var(--primary-green, #00a82d);
+  background-color: rgb(0, 138, 0); /* Verde oficial NotiClara (RGB) */
   padding: 12px 24px;
 }
 
@@ -25,11 +25,43 @@
   font-size: 0.85rem;
 }
 
+.header-logo-img {
+  width: 48px;    
+  height: 48px;
+  border-radius: 50%;  
+  object-fit: cover;  
+  background-color: #ffffff; 
+  padding: 2px;
+}
+
 .header-title {
   color: #ffffff;
   font-size: 1.5rem;
   font-weight: bold;
   font-style: italic;
+}
+
+/* Botón de la Encuesta de Usabilidad (Google Forms) */
+.btn-encuesta-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: #ffffff;
+  color: rgb(0, 138, 0);
+  font-weight: 700;
+  font-size: 0.9rem;
+  padding: 8px 16px;
+  border-radius: 20px;
+  text-decoration: none;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  transition: transform 0.15s ease, background-color 0.15s ease;
+  white-space: nowrap;
+  margin-left: 15px;
+}
+
+.btn-encuesta-header:hover {
+  background-color: #f0f0f0;
+  transform: scale(1.03);
 }
 
 /* Caja de Búsqueda */
@@ -67,105 +99,31 @@
   color: #000;
 }
 
-/* Botón de Perfil de Usuario */
-.header-user-btn {
-  background-color: #ffffff;
-  border: none;
-  border-radius: 50%;
-  width: 50px;
-  height: 50px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
-  transition: transform 0.15s ease;
+/* Feedback visual cuando el micrófono del Header está escuchando */
+.header-mic-btn.escuchando-anim {
+  animation: pulso-mic 1.2s infinite ease-in-out;
 }
 
-.header-user-btn:hover {
-  transform: scale(1.05);
+@keyframes pulso-mic {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.25);
+    opacity: 0.6;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
 }
 
-.header-logo-img {
-  width: 48px;    
-  height: 48px;
-  border-radius: 50%;  
-  object-fit: cover;  
-  background-color: #ffffff; 
-}
-
-/* --- ESTILOS DE MODO OSCURO GLOBAL --- */
-
-/* Contenedor Base en Modo Oscuro */
-.app-container.dark-theme {
-  background-color: #121212;
-  color: #ffffff;
-  min-height: 100vh;
-}
-
-/* Cambios en Títulos y Textos Generales */
-.dark-theme .catalogo-titulo,
-.dark-theme .detalle-titulo,
-.dark-theme .search-label {
-  color: #ffffff;
-}
-
-/* Cajas de Noticias y Tarjetas en Fondo Oscuro */
-.dark-theme .detalle-card-box,
-.dark-theme .card {
-  background-color: #242424;
-  color: #ffffff;
-  box-shadow: 0 4px 12px rgba(255, 255, 255, 0.05);
-}
-
-.dark-theme .detalle-parrafo {
-  color: #f0f0f0;
-}
-
-/* Ajuste de Botones de Navegación (Flechas) */
-.dark-theme .nav-arrow-btn,
-.dark-theme .btn-arrow-small {
-  background-color: #333333;
-  border-color: #666666;
-  color: #ffffff;
-}
-
-.dark-theme .nav-arrow-btn:hover,
-.dark-theme .btn-arrow-small:hover {
-  background-color: #444444;
-}
-
-/* Ajuste de Inputs e Interfaz de Búsqueda */
-.dark-theme .search-input-wrapper {
-  background-color: #2a2a2a;
-}
-
-.dark-theme .catalogo-input {
-  color: #ffffff;
-}
-
+/* Acciones a la derecha */
 .header-right-actions {
   display: flex;
   align-items: center;
   gap: 15px;
-}
-
-.header-theme-btn {
-  background-color: #ffffff;
-  border: none;
-  border-radius: 50%;
-  width: 50px;
-  height: 50px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
-  transition: transform 0.15s ease;
-}
-
-.header-theme-btn:hover {
-  transform: scale(1.08);
 }
 
 /* Grupo de botones A- / A+ */
@@ -199,22 +157,85 @@
   cursor: not-allowed;
 }
 
-/* Feedback visual cuando el micrófono del Header está escuchando */
-.header-mic-btn.escuchando-anim {
-  animation: pulso-mic 1.2s infinite ease-in-out;
+/* Botón de Cambio de Tema */
+.header-theme-btn {
+  background-color: #ffffff;
+  border: none;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  transition: transform 0.15s ease;
 }
 
-@keyframes pulso-mic {
-  0% {
-    transform: scale(1);
-    opacity: 1;
-  }
-  50% {
-    transform: scale(1.25);
-    opacity: 0.6;
-  }
-  100% {
-    transform: scale(1);
-    opacity: 1;
-  }
+.header-theme-btn:hover {
+  transform: scale(1.08);
+}
+
+/* Botón de Perfil de Usuario */
+.header-user-btn {
+  background-color: #ffffff;
+  border: none;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  transition: transform 0.15s ease;
+}
+
+.header-user-btn:hover {
+  transform: scale(1.05);
+}
+
+/* --- ESTILOS DE MODO OSCURO GLOBAL --- */
+
+.app-container.dark-theme {
+  background-color: #121212;
+  color: #ffffff;
+  min-height: 100vh;
+}
+
+.dark-theme .catalogo-titulo,
+.dark-theme .detalle-titulo,
+.dark-theme .search-label {
+  color: #ffffff;
+}
+
+.dark-theme .detalle-card-box,
+.dark-theme .card {
+  background-color: #242424;
+  color: #ffffff;
+  box-shadow: 0 4px 12px rgba(255, 255, 255, 0.05);
+}
+
+.dark-theme .detalle-parrafo {
+  color: #f0f0f0;
+}
+
+.dark-theme .nav-arrow-btn,
+.dark-theme .btn-arrow-small {
+  background-color: #333333;
+  border-color: #666666;
+  color: #ffffff;
+}
+
+.dark-theme .nav-arrow-btn:hover,
+.dark-theme .btn-arrow-small:hover {
+  background-color: #444444;
+}
+
+.dark-theme .search-input-wrapper {
+  background-color: #2a2a2a;
+}
+
+.dark-theme .catalogo-input {
+  color: #ffffff;
 }

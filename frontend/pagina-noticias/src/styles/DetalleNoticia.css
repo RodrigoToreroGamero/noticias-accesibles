@@ -123,11 +123,17 @@
 }
 
 .texto-box {
-  flex: 1;
-  height: 100%;
-  overflow-y: auto;
-  scroll-behavior: smooth;
+  width: 100%;
+  height: 280px;
   box-sizing: border-box;
+  overflow-y: auto;         
+  padding: 16px;
+  scrollbar-width: none;     
+  -ms-overflow-style: none;  
+}
+
+.texto-box::-webkit-scrollbar {
+  display: none;             
 }
 
 .detalle-parrafo {
@@ -185,4 +191,117 @@
 .nav-arrow-btn:hover {
   background-color: #f0f0f0;
   color: #000;
+}
+
+@media (max-width: 768px) {
+
+  .detalle-noticia-container {
+    padding: 12px 8px;
+  }
+
+  .detalle-titulo {
+    font-size: 1.5rem;
+    text-align: center;
+    margin-bottom: 16px;
+  }
+
+  .detalle-actions-bar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    margin-bottom: 24px;
+  }
+
+  .btn-volver {
+    width: 100%;
+    max-width: 320px;
+    padding: 12px 16px;
+    font-size: 1rem;
+    text-align: center;
+  }
+
+  .detalle-actions-bar button,
+  .btn-escuchar-noticia {
+    width: 100%;
+    max-width: 320px;
+    padding: 12px 16px;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center; 
+    gap: 8px;                
+    text-align: center;
+  }
+
+  .detalle-layout-wrapper {
+    display: flex;
+    flex-direction: row;      
+    align-items: flex-start;
+    justify-content: center;
+    gap: 12px;
+    width: 100%;
+  }
+
+  .detalle-grid {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    flex: 1;
+    max-width: 320px;         
+  }
+
+  .imagen-box {
+    width: 100%;
+    height: 280px;            
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    padding: 12px;
+  }
+
+  .detalle-imagen {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 12px;
+  }
+
+  .texto-box-wrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .texto-box {
+    width: 100%;
+    height: 280px;            
+    box-sizing: border-box;
+    overflow-y: auto;        
+    padding: 16px;
+  }
+
+  .texto-nav-arrows {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 12px;
+  }
+
+  .nav-arrows-column {
+    display: flex;
+    flex-direction: column;   
+    gap: 12px;
+    margin-top: 10px;
+  }
+
+  .nav-arrow-btn {
+    width: 46px;
+    height: 46px;
+  }
 }

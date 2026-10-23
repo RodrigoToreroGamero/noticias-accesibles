@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Search, Mic, User, Sun, Moon } from 'lucide-react';
+import { Search, Mic, User, Sun, Moon, ClipboardList } from 'lucide-react';
 import '../styles/Header.css';
 
 export default function Header({
@@ -10,9 +10,10 @@ export default function Header({
   onDisminuirFuente,
   busqueda,
   setBusqueda,
-  mostrarBusqueda = true // <-- Nueva prop con valor por defecto
+  mostrarBusqueda = true
 }) {
   const [escuchando, setEscuchando] = useState(false);
+  const GOOGLE_FORMS_URL = "https://docs.google.com/forms/d/e/1FAIpQLScm7EI0UpcujvLmUIKYmSRK9dEvI4fB5Dv7twXOBHnTMq35YQ/viewform";
 
   const activarMicrofonoHeader = () => {
     const SpeechRecognition =
@@ -57,7 +58,19 @@ export default function Header({
         <span className="header-title">NotiClara</span>
       </div>
 
-      {/* Barra de Búsqueda Global (Solo se muestra si mostrarBusqueda es true) */}
+      {/* Botón Encuesta de Usabilidad */}
+      <a 
+        href={GOOGLE_FORMS_URL} 
+        target="_blank" 
+        rel="noopener noreferrer" 
+        className="btn-encuesta-header"
+        title="Realizar encuesta de usabilidad"
+      >
+        <ClipboardList size={18} />
+        <span>Encuesta Usabilidad</span>
+      </a>
+
+      {/* Barra de Búsqueda Global */}
       {mostrarBusqueda && (
         <div className="header-search-box">
           <Search className="header-icon-search" size={22} color="#555" />
