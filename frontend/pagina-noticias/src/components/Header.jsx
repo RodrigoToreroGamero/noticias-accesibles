@@ -48,6 +48,7 @@ export default function Header({
 
   return (
     <header className="header-container">
+		
       {/* Marca / Logo */}
       <div className="header-brand">
         <img 
@@ -67,7 +68,7 @@ export default function Header({
         title="Realizar encuesta de usabilidad"
       >
         <ClipboardList size={18} />
-        <span>Encuesta Usabilidad</span>
+        <span>Encuesta</span>
       </a>
 
       {/* Barra de Búsqueda Global */}
@@ -135,6 +136,7 @@ export default function Header({
           <User size={26} color="#000" />
         </button>
       </div>
+	
     </header>
   );
 }
