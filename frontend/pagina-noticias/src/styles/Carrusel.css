@@ -1,6 +1,7 @@
 /* Carrusel */
 .carousel-wrapper {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: 20px;
@@ -9,10 +10,22 @@
   padding: 20px 0;
 }
 
-.cards-container {
+.carousel-cards-container {
   display: flex;
-  gap: 40px;
+  flex-direction: row;
+  margin: 1rem;
+  gap: 1rem;
 }
+
+/* cards-container responsivo en celular:
+@media (max-width: 600px) {
+	.cards-container {
+		flex-wrap: wrap;
+		justify-content: center;
+		gap: 20px;
+	}	
+}
+*/
 
 .card {
   width: 320px;
@@ -53,21 +66,38 @@
   filter: brightness(1.1);
 }
 
-.nav-arrow-btn {
+.nav-carousel-btn {
   background-color: var(--primary-green);
   color: white;
   border: none;
-  width: 60px;
+  width: auto;
+  min-width: 120px;
   height: 60px;
+  padding: 0 60px;
   border-radius: 15px;
-  font-size: 2rem;
+  font-size: 1.5rem;
   cursor: pointer;
   display: flex;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
+  gap: 1rem;
+  margin: 1rem;
 }
 
-.nav-arrow-btn:disabled {
+.nav-carousel-btn:disabled {
   opacity: 0.2;
   cursor: not-allowed;
 }
+
+.nav-carousel-column {
+	display: flex !important;
+	flex-direction: row !important;
+	justify-content: center;
+	align-items: center;
+	gap: 1rem;
+	margin-top: 10px;
+	padding: 1rem;
+	width: 100%;
+}
+

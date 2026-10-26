@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { CATEGORIAS } from '../data/categorias';
 import '../styles/Carrusel.css'
+//import { ArrowRight, ArrowLeft } from 'lucide-react';
 
 export default function Carrusel({ onSelectCategoria }) {
   const [paginaActual, setPaginaActual] = useState(0);
@@ -12,16 +13,8 @@ export default function Carrusel({ onSelectCategoria }) {
 
   return (
     <main className="carousel-wrapper">
-      <button 
-        className="nav-arrow-btn"
-        onClick={() => setPaginaActual(paginaActual - 1)}
-        disabled={paginaActual === 0}
-        aria-label="Anterior"
-      >
-        ←
-      </button>
-
-      <div className="cards-container">
+    
+      <div className="carousel-cards-container">
         {tarjetasVisibles.map((bloque) => (
           <div 
             key={bloque.id} 
@@ -37,15 +30,36 @@ export default function Carrusel({ onSelectCategoria }) {
           </div>
         ))}
       </div>
+      
+	  
+	  
+        <div className="nav-carousel-column">
+		
+		  <button
+            type="button"
+            className="nav-carousel-btn"            		
+			onClick={() => setPaginaActual(paginaActual - 1)}
+            title="Anterior"						
+			disabled={paginaActual === 0}
+			aria-label="Anterior"
+          >
+			Anterior            
+          </button>
+		
+          <button
+            type="button"
+            className="nav-carousel-btn"            
+            onClick={() => setPaginaActual(paginaActual + 1)}
+            title="Siguiente"
+			disabled={paginaActual === totalPaginas - 1}
+			aria-label="Siguiente"
+          >
+			Siguiente            
+          </button>
 
-      <button 
-        className="nav-arrow-btn"
-        onClick={() => setPaginaActual(paginaActual + 1)}
-        disabled={paginaActual === totalPaginas - 1}
-        aria-label="Siguiente"
-      >
-        →
-      </button>
+
+        </div>
+	  
     </main>
   );
 }

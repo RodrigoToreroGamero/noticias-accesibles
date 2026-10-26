@@ -90,6 +90,14 @@ export default function Catalogo({
       {/* Rejilla de Tarjetas + Flechas de Navegación Lateral */}
       <div className="catalogo-grid-wrapper">
         <div className="catalogo-grid">
+			{subcategorias.length <= 0 && <p aria-label="Actualmente no hay categorias disponibles">
+				Actualmente no hay categorias disponibles
+			</p>}
+		
+		{(subcategorias.length > 0 && elementosFiltrados.length <= 0) && <p aria-label="No se ha encontrado {busqueda}">
+			No se ha encontrado "{busqueda}"
+		</p>}
+		
           {elementosFiltrados.map((item) => (
             <div
               key={item.id}
