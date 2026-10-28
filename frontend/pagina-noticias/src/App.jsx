@@ -24,8 +24,6 @@ export default function App() {
 
   const [fontSize, setFontSize] = useState('normal');
 
-  const [busqueda, setBusqueda] = useState('');
-
   const toggleTheme = () => {
     setDarkMode((prevMode) => !prevMode);
   };
@@ -81,10 +79,7 @@ export default function App() {
         onToggleTheme={toggleTheme} 
         fontSize={fontSize} 
         onAumentarFuente={aumentarFuente} 
-        onDisminuirFuente={disminuirFuente} 
-        busqueda={busqueda} 
-        setBusqueda={setBusqueda}
-        mostrarBusqueda={!categoriaActual && !subcategoriaActual && !noticiaSeleccionada}
+        onDisminuirFuente={disminuirFuente}        
       />
 
       {/* NIVEL 1: INICIO */}

@@ -38,7 +38,7 @@ export default function Catalogo({
   };
 
   const scrollArriba = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollBy({ top: -500, behavior: 'smooth' });
   };
 
   return (
@@ -111,7 +111,7 @@ export default function Catalogo({
             >
               <div className="card-title-bar">{item.nombre}</div>
               <img src={item.imagen} alt={item.nombre} className="card-image" />
-              <button className="card-button">Leer Noticias</button>
+              <span className="card-button">Leer Noticias</span>
             </div>
           ))}
         </div>
