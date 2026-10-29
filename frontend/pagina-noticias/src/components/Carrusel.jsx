@@ -1,12 +1,11 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import { CATEGORIAS } from '../data/categorias';
 import { ArrowLeft, ArrowRight, ArrowUp, ArrowDown } from 'lucide-react';
 import '../styles/Carrusel.css';
 
 export default function Carrusel({ onSelectCategoria }) {
   const [paginaActual, setPaginaActual] = useState(0);
-  const [esCelular, setEsCelular] = useState(false);
-  const touchStart = useRef(null);
+  const [esCelular, setEsCelular] = useState(false); 
 
   // Detectar si es vista de celular para mostrar de 1 en 1 tarjeta
   useEffect(() => {
@@ -23,34 +22,12 @@ export default function Carrusel({ onSelectCategoria }) {
   const inicio = paginaActual * tarjetasPorPagina;
   const tarjetasVisibles = CATEGORIAS.slice(inicio, inicio + tarjetasPorPagina);
 
-  const handleTouchStart = (e) => {
-    touchStart.current = { x: e.touches[0].clientX, y: e.touches[0].clientY };
-  };
-  
-  const handleTouchEnd = (e) => {
-    if (!touchStart.current) return;
-    const deltaX = e.changedTouches[0].clientX - touchStart.current.x;
-    const deltaY = e.changedTouches[0].clientY - touchStart.current.y;
-    touchStart.current = null;
-    
-    if (Math.abs(deltaY) < 100 || Math.abs(deltaY) < Math.abs(deltaX)) return;
-    
-    if (deltaY < 0) {
-      setPaginaActual((p) => Math.min(p + 1, totalPaginas - 1));
-    } else {
-      setPaginaActual((p) => Math.max(p - 1, 0));
-    }
-  };
-
   const irAnterior = () => setPaginaActual((p) => Math.max(p - 1, 0));
   const irSiguiente = () => setPaginaActual((p) => Math.min(p + 1, totalPaginas - 1));
 
   return (
     <main className="carousel-main-wrapper">
-      <div className="carousel-content-layout"
-        onTouchStart={handleTouchStart}
-        onTouchEnd={handleTouchEnd}
-      >
+      <div className="carousel-content-layout">
         {/* Botón Izquierdo Horizontal (Escritorio) - Cuadrado con bordes redondeados y verde */}
         <button
           type="button"
