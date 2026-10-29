@@ -33,9 +33,9 @@ export default function Carrusel({ onSelectCategoria }) {
     const deltaY = e.changedTouches[0].clientY - touchStart.current.y;
     touchStart.current = null;
     
-    if (Math.abs(deltaX) < 100 || Math.abs(deltaX) < Math.abs(deltaY)) return;
+    if (Math.abs(deltaY) < 100 || Math.abs(deltaY) < Math.abs(deltaX)) return;
     
-    if (deltaX < 0) {
+    if (deltaY < 0) {
       setPaginaActual((p) => Math.min(p + 1, totalPaginas - 1));
     } else {
       setPaginaActual((p) => Math.max(p - 1, 0));
