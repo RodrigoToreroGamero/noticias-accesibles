@@ -1,102 +1,121 @@
-import { useState, useRef } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { CATEGORIAS } from '../data/categorias';
-import '../styles/Carrusel.css'
-//import { ArrowRight, ArrowLeft } from 'lucide-react';
+import { ArrowLeft, ArrowRight, ArrowUp, ArrowDown } from 'lucide-react';
+import '../styles/Carrusel.css';
 
 export default function Carrusel({ onSelectCategoria }) {
   const [paginaActual, setPaginaActual] = useState(0);
+  const [esCelular, setEsCelular] = useState(false);
   const touchStart = useRef(null);
-  const tarjetasPorPagina = 2;
-  
+
+  // Detectar si es vista de celular para mostrar de 1 en 1 tarjeta
+  useEffect(() => {
+    const handleResize = () => {
+      setEsCelular(window.innerWidth <= 768);
+    };
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  const tarjetasPorPagina = esCelular ? 1 : 2;
   const totalPaginas = Math.ceil(CATEGORIAS.length / tarjetasPorPagina);
   const inicio = paginaActual * tarjetasPorPagina;
   const tarjetasVisibles = CATEGORIAS.slice(inicio, inicio + tarjetasPorPagina);
-  
-  const touchSpeedToIgnoreThreshold = 100;
-  
+
   const handleTouchStart = (e) => {
-	  touchStart.current = {
-		  x: e.touches[0].clientX,
-		  y: e.touches[0].clientY
-	  };
+    touchStart.current = { x: e.touches[0].clientX, y: e.touches[0].clientY };
   };
   
   const handleTouchEnd = (e) => {
-	  if(!touchStart.current) {
-		  return;
-	  }
-	  
-	  const deltaX = e.changedTouches[0].clientX - touchStart.current.x;
-	  const deltaY = e.changedTouches[0].clientY - touchStart.current.y;
-	  
-	  touchStart.current = null;
-	  
-	  if(Math.abs(deltaX) < touchSpeedToIgnoreThreshold || Math.abs(deltaX) < Math.abs(deltaY)) {
-		  return;
-	  }
-	  
-	  if(deltaX < 0) {
-		  // Deslizar hacia la izquierda para ir a la siguiente página del carrusel:
-		  setPaginaActual((pagina) => Math.min(pagina + 1, totalPaginas - 1));
-	  } else {
-		  // Deslizar hacia la derecha para regresar a la página anterior del carrusel:
-		  setPaginaActual((pagina) => Math.max(pagina - 1, 0));
-	  }
+    if (!touchStart.current) return;
+    const deltaX = e.changedTouches[0].clientX - touchStart.current.x;
+    const deltaY = e.changedTouches[0].clientY - touchStart.current.y;
+    touchStart.current = null;
+    
+    if (Math.abs(deltaX) < 100 || Math.abs(deltaX) < Math.abs(deltaY)) return;
+    
+    if (deltaX < 0) {
+      setPaginaActual((p) => Math.min(p + 1, totalPaginas - 1));
+    } else {
+      setPaginaActual((p) => Math.max(p - 1, 0));
+    }
   };
 
-  return (
-    <main className="carousel-wrapper">
-    
-      <div className="carousel-cards-container"
-		onTouchStart={handleTouchStart}
-		onTouchEnd={handleTouchEnd}
-	  >
+  const irAnterior = () => setPaginaActual((p) => Math.max(p - 1, 0));
+  const irSiguiente = () => setPaginaActual((p) => Math.min(p + 1, totalPaginas - 1));
 
-        {tarjetasVisibles.map((bloque) => (
-          <div 
-            key={bloque.id} 
-            className="card"
-            style={{ cursor: 'pointer' }}
-            onClick={() => onSelectCategoria && onSelectCategoria(bloque.id)} // <-- 2. Llamar a la función			
-          >
-            <div className="card-title-bar">{bloque.titulo}</div>
-            <img src={bloque.imagen} alt={bloque.titulo} className="card-image" />
-            <span className="card-button">
-              Acceder al contenido
-            </span>
-          </div>
-        ))}
-      </div>
-      
-	  
-	  
-        <div className="nav-carousel-column">
-		
-		  <button
-            type="button"
-            className="nav-carousel-btn"            		
-			onClick={() => setPaginaActual(paginaActual - 1)}
-            title="Anterior"						
-			disabled={paginaActual === 0}
-			aria-label="Anterior"
-          >
-			Anterior            
-          </button>
-		
+  return (
+    <main className="carousel-main-wrapper">
+      <div className="carousel-content-layout"
+        onTouchStart={handleTouchStart}
+        onTouchEnd={handleTouchEnd}
+      >
+        {/* Botón Izquierdo Horizontal (Escritorio) - Cuadrado con bordes redondeados y verde */}
+        <button
+          type="button"
+          className="carousel-nav-btn-desktop carousel-btn-left"
+          onClick={irAnterior}
+          disabled={paginaActual === 0}
+          aria-label="Anterior"
+        >
+          <ArrowLeft size={28} color="#fff" />
+        </button>
+
+        {/* Contenedor de Tarjetas */}
+        <div className="carousel-cards-box">
+          {tarjetasVisibles.map((bloque) => (
+            <div 
+              key={bloque.id} 
+              className="carousel-card-item"
+              onClick={() => onSelectCategoria && onSelectCategoria(bloque.id)}     
+              role="button"
+              tabIndex={0}
+            >
+              <div className="carousel-card-title">{bloque.titulo}</div>
+              <img src={bloque.imagen} alt={bloque.titulo} className="carousel-card-img" />
+              <span className="carousel-card-btn-text">
+                Acceder al contenido
+              </span>
+            </div>
+          ))}
+        </div>
+        
+        {/* Botón Derecho Horizontal (Escritorio) - Cuadrado con bordes redondeados y verde */}
+        <button
+          type="button"
+          className="carousel-nav-btn-desktop carousel-btn-right"
+          onClick={irSiguiente}
+          disabled={paginaActual === totalPaginas - 1}
+          aria-label="Siguiente"
+        >
+          <ArrowRight size={28} color="#fff" />
+        </button>
+
+        {/* Botones Verticales (Celular) - Cuadrados, verdes y con flechas arriba/abajo */}
+        <div className="carousel-nav-mobile-column">
           <button
             type="button"
-            className="nav-carousel-btn"            
-            onClick={() => setPaginaActual(paginaActual + 1)}
-            title="Siguiente"
-			disabled={paginaActual === totalPaginas - 1}
-			aria-label="Siguiente"
+            className="carousel-nav-btn-mobile"       
+            onClick={irAnterior}
+            disabled={paginaActual === 0}
+            aria-label="Anterior"
           >
-			Siguiente            
+            <ArrowUp size={28} color="#fff" />
           </button>
-
-
+  
+          <button
+            type="button"
+            className="carousel-nav-btn-mobile"         
+            onClick={irSiguiente}
+            disabled={paginaActual === totalPaginas - 1}
+            aria-label="Siguiente"
+          >
+            <ArrowDown size={28} color="#fff" />
+          </button>
         </div>
-	  
+
+      </div>
     </main>
   );
 }

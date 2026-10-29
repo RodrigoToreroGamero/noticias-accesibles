@@ -28,7 +28,7 @@ export default function Catalogo({
       onError: () => setEscuchando(false),
       onEnd: () => setEscuchando(false)
     });
-  };     
+  };    
 
   const elementosFiltrados = (subcategorias || []).filter((item) =>
     (item?.nombre || '').toLowerCase().includes(busqueda.toLowerCase()));
@@ -90,18 +90,18 @@ export default function Catalogo({
       {/* Rejilla de Tarjetas + Flechas de Navegación Lateral */}
       <div className="catalogo-grid-wrapper">
         <div className="catalogo-grid">
-			{subcategorias.length <= 0 && <p aria-label="Actualmente no hay categorias disponibles">
-				Actualmente no hay categorias disponibles
-			</p>}
-		
-		{(subcategorias.length > 0 && elementosFiltrados.length <= 0) && <p aria-label="No se ha encontrado {busqueda}">
-			No se ha encontrado "{busqueda}"
-		</p>}
-		
+      {subcategorias.length <= 0 && <p aria-label="Actualmente no hay categorias disponibles">
+        Actualmente no hay categorias disponibles
+      </p>}
+    
+    {(subcategorias.length > 0 && elementosFiltrados.length <= 0) && <p aria-label="No se ha encontrado {busqueda}">
+      No se ha encontrado "{busqueda}"
+    </p>}
+    
           {elementosFiltrados.map((item) => (
             <div
               key={item.id}
-              className="card card-catalogo-clickable"
+              className="catalogo-card catalogo-card-clickable"
               onClick={() => {
                 onSelectCard && onSelectCard(item);
                 setBusqueda("");
@@ -109,9 +109,9 @@ export default function Catalogo({
               role="button"
               tabIndex={0}
             >
-              <div className="card-title-bar">{item.nombre}</div>
-              <img src={item.imagen} alt={item.nombre} className="card-image" />
-              <span className="card-button">Leer Noticias</span>
+              <div className="catalogo-card-title-bar">{item.nombre}</div>
+              <img src={item.imagen} alt={item.nombre} className="catalogo-card-image" />
+              <span className="catalogo-card-button">Leer Noticias</span>
             </div>
           ))}
         </div>

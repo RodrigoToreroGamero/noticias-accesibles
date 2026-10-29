@@ -2,15 +2,39 @@
   --primary-green: #00a600;
   --dark-header: #000000;
   --bg-color: #ffffff;
+  --bg-principal: #ffffff;
+  --bg-secundario: #f4f6f8;
+  --texto-principal: #222222;
+  --card-bg: #ffffff;
+  --border-color: #e0e0e0;
 }
 
-body {
+/* --- ESTRUCTURA GLOBAL Y STICKY FOOTER --- */
+html, body {
+  height: 100%;
   margin: 0;
+  padding: 0;
   font-family: Arial, Helvetica, sans-serif;
-  background-color: var(--bg-color);
+  background-color: var(--bg-principal);
+  color: var(--texto-principal);
 }
 
-/* Bienvenida */
+#root {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* El contenedor principal distribuye el espacio verticalmente */
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Ocupa al menos el 100% del alto del viewport */
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* --- BIENVENIDA --- */
 .welcome-section {
   text-align: center;
   margin: 25px 0 15px 0;
@@ -27,13 +51,17 @@ body {
   margin-top: 0;
 }
 
-/* Fondo general de la página */
+/* --- MODO OSCURO (ALTO CONTRASTE SUAVE) --- */
 body.dark-theme {
-  background-color: #121212 !important;
-  color: #ffffff !important;
+  --bg-principal: #18191a;
+  --bg-secundario: #242526;
+  --texto-principal: #f5f6f7;
+  --card-bg: #242526;
+  --border-color: #3a3b3c;
+  background-color: var(--bg-principal) !important;
+  color: var(--texto-principal) !important;
 }
 
-/* Títulos principales y etiquetas */
 body.dark-theme .catalogo-titulo,
 body.dark-theme .detalle-titulo,
 body.dark-theme .search-label,
@@ -43,10 +71,10 @@ body.dark-theme p {
   color: #ffffff;
 }
 
-/* Tarjetas y cajas de texto */
 body.dark-theme .detalle-card-box,
-body.dark-theme .card {
-  background-color: #222222;
+body.dark-theme .card,
+body.dark-theme .catalogo-card {
+  background-color: #242526;
   color: #ffffff;
   box-shadow: 0 4px 12px rgba(255, 255, 255, 0.08);
 }
@@ -55,7 +83,6 @@ body.dark-theme .detalle-parrafo {
   color: #e0e0e0;
 }
 
-/* Botones de navegación (Flechas) */
 body.dark-theme .nav-arrow-btn,
 body.dark-theme .btn-arrow-small {
   background-color: #2d2d2d;
@@ -68,7 +95,6 @@ body.dark-theme .btn-arrow-small:hover {
   background-color: #3d3d3d;
 }
 
-/* Barra de Búsqueda */
 body.dark-theme .search-input-wrapper {
   background-color: #2a2a2a;
 }
@@ -77,25 +103,19 @@ body.dark-theme .catalogo-input {
   color: #ffffff;
 }
 
-/* --- ESCALADO GLOBAL DE FUENTE (Aplica a TODA la página) --- */
-
-/* Tamaño Base Normal (100% / 16px) */
+/* --- ESCALADO GLOBAL DE FUENTE --- */
 html.font-normal {
   font-size: 16px;
 }
 
-/* Tamaño Grande (Aumenta un 20% absolutamente todo en la página) */
 html.font-grande {
-  font-size: 19.2px; /* 120% del tamaño base */
+  font-size: 19.2px;
 }
 
-/* Tamaño Extra Grande (Aumenta un 40% absolutamente todo en la página) */
 html.font-extra-grande {
-  font-size: 22.4px; /* 140% del tamaño base */
+  font-size: 22.4px;
 }
 
-/* Regla de respaldo para garantizar que párrafos, botones, inputs y títulos 
-   hereden el tamaño relativo (rem) del html */
 body, 
 input, 
 button, 
@@ -105,7 +125,6 @@ h1, h2, h3, h4, h5, h6, p, span, a, label {
   transition: font-size 0.2s ease;
 }
 
-/* Transición suave para todos los elementos al cambiar de tema */
 body, 
 header, 
 footer, 
@@ -113,28 +132,4 @@ footer,
 button, 
 input {
   transition: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease;
-}
-
-/* Modo Claro (Por defecto) */
-:root {
-  --bg-principal: #ffffff;
-  --bg-secundario: #f4f6f8;
-  --texto-principal: #222222;
-  --card-bg: #ffffff;
-  --border-color: #e0e0e0;
-}
-
-/* Modo Alto Contraste Suave (Gris carbón en vez de negro puro) */
-body.dark-theme {
-  --bg-principal: #18191a;       /* Gris muy oscuro en lugar de #000000 */
-  --bg-secundario: #242526;     /* Gris medio para tarjetas/bloques */
-  --texto-principal: #f5f6f7;    /* Blanco suave para evitar fatiga visual */
-  --card-bg: #242526;
-  --border-color: #3a3b3c;
-}
-
-/* Aplicamos las variables al body */
-body {
-  background-color: var(--bg-principal);
-  color: var(--texto-principal);
 }
