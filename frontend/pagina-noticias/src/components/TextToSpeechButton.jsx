@@ -11,9 +11,14 @@ export default function TextToSpeechButton({ text }) {
 			return;
 		}
 		
+		// codigo de depuración para navegador de celular:
+		alert("Iniciando lectura");
+		
 		stopSpeaking();		
 		setIsSpeaking(true);
 		speak(text, () => {
+			// codigo de depuración para navegador de celular:
+			alert("Finalizó lectura");
 			setIsSpeaking(false);
 		});
 	};
