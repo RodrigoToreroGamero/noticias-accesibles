@@ -116,12 +116,24 @@
 .catalogo-card-clickable {
   width: 100%; 
   cursor: pointer;
-  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  outline: 2px solid transparent;
+  outline-offset: 1px;
+  transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1),
+              box-shadow 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
-.catalogo-card-clickable:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+/* Elevación ligera al pasar el cursor, sin contorno verde adicional. */
+@media (hover: hover) and (pointer: fine) {
+  .catalogo-card-clickable:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+  }
+}
+
+.catalogo-card-clickable:focus-visible {
+  outline-color: rgba(0, 166, 0, 0.65);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.16),
+              0 0 0 2px rgba(0, 166, 0, 0.22);
 }
 
 .catalogo-card-title-bar {
