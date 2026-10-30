@@ -4,7 +4,6 @@ const defaultConfig = {
 };
 
 var config = { ...defaultConfig };
-const synth = window.speechSynthesis;
 
 export function setTextToSpeechConfig(newConfig) {
 	try {
@@ -20,7 +19,7 @@ export function getTextToSpeechConfig() {
 }
 
 export function speak(text, onEnd) {
-	if(!synth || !window.SpeechSynthesisUtterance) {
+	if(!window.SpeechSynthesisUtterance) {
 		console.error("Web Speech API no disponible");
 		alert("Lector de texto no disponible en este navegador.");
 		if(onEnd) {
@@ -29,9 +28,7 @@ export function speak(text, onEnd) {
 		return;
 	}
 	
-	try {
-		synth.cancel();
-		
+	try {				
 		const utterance = new SpeechSynthesisUtterance(text);
 		utterance.lang = config.lang;
 		
@@ -52,7 +49,7 @@ export function speak(text, onEnd) {
 			}
 		};
 		
-		synth.speak(utterance);
+		window.speechSynthesis.speak(utterance);
 	} catch(ex) {
 		console.error(ex.message);
 		alert('La síntesis de voz no está soportada en este navegador.');
@@ -63,11 +60,11 @@ export function speak(text, onEnd) {
 }
 
 export function stopSpeaking() {
-	if(synth) {
-		synth.cancel();
+	if(window.speechSynthesis) {
+		window.speechSynthesis.cancel();
 	}
 }
 
 export function getVoices() {
-	return synth ? synth.getVoices() : [];
+	return window.speechSynthesis ? window.speechSynthesis.getVoices() : [];
 }
