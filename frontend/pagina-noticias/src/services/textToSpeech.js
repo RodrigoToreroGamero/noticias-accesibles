@@ -20,7 +20,18 @@ export function getTextToSpeechConfig() {
 }
 
 export function speak(text, onEnd) {
-	try {		
+	if(!synth || !window.SpeechSynthesisUtterance) {
+		console.error("Web Speech API no disponible");
+		alert("Lector de texto no disponible en este navegador.");
+		if(onEnd) {
+			onEnd();
+		}
+		return;
+	}
+	
+	try {
+		synth.cancel();
+		
 		const utterance = new SpeechSynthesisUtterance(text);
 		utterance.lang = config.lang;
 		
@@ -34,7 +45,8 @@ export function speak(text, onEnd) {
 			}
 		};
 		
-		utterance.onerror = () => {
+		utterance.onerror = (event) => {
+			console.error("Error Text-to-speech: ", event.error);
 			if(onEnd) {
 				onEnd();
 			}
@@ -51,9 +63,11 @@ export function speak(text, onEnd) {
 }
 
 export function stopSpeaking() {
-	synth.cancel();
+	if(synth) {
+		synth.cancel();
+	}
 }
 
 export function getVoices() {
-	return window.speechSynthesis.getVoices();
+	return synth ? synth.getVoices() : [];
 }

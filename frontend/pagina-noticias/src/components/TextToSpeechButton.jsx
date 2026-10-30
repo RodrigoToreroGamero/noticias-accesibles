@@ -7,6 +7,11 @@ export default function TextToSpeechButton({ text }) {
 	const [isSpeaking, setIsSpeaking] = useState(false);
 	
 	const handleSpeak = () => {
+		if(!text) {
+			return;
+		}
+		
+		stopSpeaking();		
 		setIsSpeaking(true);
 		speak(text, () => {
 			setIsSpeaking(false);
@@ -17,23 +22,22 @@ export default function TextToSpeechButton({ text }) {
 		stopSpeaking();
 		setIsSpeaking(false);
 	};
-	
 		
 	return (
-		isSpeaking ? (
-			<button 
-				className="btn-escuchar btn-detener-escuchar" 
-				onClick={handleStop}					
-			>
-				<VolumeX size={24} /> Detener Noticia
-			</button>
-		) : (
-			<button 
-				className="btn-escuchar" 
-				onClick={handleSpeak}					
-			>
-				<Volume2 size={24} /> Escuchar Noticia
-			</button>
-		)
-	);	
+        <button
+            type="button"
+            className={`btn-escuchar ${isSpeaking ? 'btn-detener-escuchar' : ''}`}
+            onClick={isSpeaking ? handleStop : handleSpeak}
+        >
+            {isSpeaking ? (
+                <>
+                    <VolumeX size={24} /> Detener Noticia
+                </>
+            ) : (
+                <>
+                    <Volume2 size={24} /> Escuchar Noticia
+                </>
+            )}
+        </button>
+    );
 }
