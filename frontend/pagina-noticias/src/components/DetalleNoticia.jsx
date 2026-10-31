@@ -11,16 +11,6 @@ export default function DetalleNoticia({ noticia, onVolver }) {
     window.scrollTo(0, 0);	
   }, [noticia]);
   
-  useEffect(() => {    
-	// codigo de depuración para navegador de celular:
-	alert("DetalleNoticia montado");
-
-	// codigo de depuración para navegador de celular:
-	return () => {
-		alert("DetalleNoticia desmontado");
-	};
-  }, []);
-
   if (!noticia) return null;
 
   const textoCompleto = Array.isArray(noticia.contenido)
