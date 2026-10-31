@@ -12,13 +12,13 @@ export default function TextToSpeechButton({ text }) {
 		}
 		
 		// codigo de depuración para navegador de celular:
-		alert("Iniciando lectura");
+		//alert("Iniciando lectura");
 		
 		stopSpeaking();		
 		setIsSpeaking(true);
 		speak(text, () => {
 			// codigo de depuración para navegador de celular:
-			alert("Finalizó lectura");
+			//alert("Finalizó lectura");
 			setIsSpeaking(false);
 		});
 	};

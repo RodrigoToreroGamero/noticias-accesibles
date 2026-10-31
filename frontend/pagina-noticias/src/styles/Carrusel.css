@@ -144,8 +144,12 @@ html, body {
     display: flex;
     justify-content: center;
     width: 100%;
-    max-width: 340px;
+    /*max-width: 340px;*/
+	max-width: 100%;
     margin: 0 auto;
+	
+	padding-right: 48px;
+	box-sizing: border-box;
   }
 
   /* Ocultar botones horizontales en móvil */
@@ -158,36 +162,48 @@ html, body {
     flex-direction: column;
     align-items: center;
     width: 100%;
+	
+	min-width: 0;
   }
 
   /* Una sola tarjeta grande y centrada */
   .carousel-card-item {
     width: 100%; 
-    max-width: 340px; 
+    /*max-width: 340px;*/ 
+	
+	max-width: 300px;
+	min-width: 0;
   }
 
   .carousel-card-img {
-    height: 190px;
+    /*height: 190px;*/
+	height: 170px;
   }
 
   .carousel-card-title {
-    font-size: 1.2rem;
-    padding: 12px;
+    /*font-size: 1.2rem;*/
+	font-size: 1.1rem;
+    /*padding: 12px;*/
+	padding: 10px;
   }
 
   .carousel-card-btn-text {
-    font-size: 1.1rem;
-    padding: 12px;
+    /*font-size: 1.1rem;*/
+	font-size: 1rem;
+    /*padding: 12px;*/
+	padding: 10px;
   }
 
   /* Botones verticales a la derecha (Cuadrados, bordes redondeados y verdes) */
   .carousel-nav-mobile-column {
     position: absolute;
-    right: -55px;
+    /*right: -55px;*/
+	right: 0;
     top: 35%;
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    /*gap: 12px;*/
+	gap: 10px;
     z-index: 10;
   }
 
@@ -195,14 +211,18 @@ html, body {
     background-color: var(--primary-green);
     border: none;
     border-radius: 14px; /* Cuadrados con bordes redondeados idénticos */
-    width: 44px;
-    height: 44px;
+    /*width: 44px;*/
+	width: 38px;
+    /*height: 44px;*/
+	height: 38px;
     cursor: pointer;
     display: flex;
     justify-content: center;
     align-items: center;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
     transition: filter 0.15s ease;
+	
+	flex-shrink: 0;
   }
 
   .carousel-nav-btn-mobile:hover:not(:disabled) {

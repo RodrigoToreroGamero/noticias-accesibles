@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { ArrowDown, ArrowUp, Search, Mic } from 'lucide-react';
+import { ArrowDown, ArrowUp, ArrowLeft, Search, Mic } from 'lucide-react';
 import '../styles/Catalogo.css';
 import { startVoiceRecognition } from '../services/voiceCommandsConfig';
 
@@ -52,7 +52,7 @@ export default function Catalogo({
             setBusqueda("");
           }}    
         >
-          {textoBotonVolver}
+			<ArrowLeft size={24} />{textoBotonVolver}
         </button>
         <h1 className="catalogo-titulo">{titulo}</h1>
       </div>
