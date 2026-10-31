@@ -133,10 +133,10 @@ html, body {
   display: none;
 }
 
-/* --- RESPONSIVE EN MÓVILES (1 sola tarjeta grande y centrada) --- */
+/* --- RESPONSIVE EN MÓVILES*/
 @media (max-width: 768px) {
   .carousel-main-wrapper {
-    padding: 0 10px;
+    padding: 0 20px;
   }
 
   .carousel-content-layout {
@@ -144,11 +144,11 @@ html, body {
     display: flex;
     justify-content: center;
     width: 100%;
-    max-width: 340px;
+    max-width: 370px;
     margin: 0 auto;
   }
 
-  /* Ocultar botones horizontales en móvil */
+  /* Ocultar botones horizontales de escritorio */
   .carousel-nav-btn-desktop {
     display: none !important;
   }
@@ -158,32 +158,36 @@ html, body {
     flex-direction: column;
     align-items: center;
     width: 100%;
+    box-sizing: border-box;
   }
 
-  /* Una sola tarjeta grande y centrada */
+  /* Mismo ancho que las tarjetas del catálogo */
   .carousel-card-item {
-    width: 100%; 
-    max-width: 340px; 
+    width: 100%;
+    max-width: 370px;
   }
 
+  /* Misma altura de imagen que el catálogo */
   .carousel-card-img {
-    height: 190px;
+    height: 210px;
   }
 
+  /* Título */
   .carousel-card-title {
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     padding: 12px;
   }
 
+  /* Texto de acceso */
   .carousel-card-btn-text {
-    font-size: 1.1rem;
-    padding: 12px;
+    font-size: 1.2rem;
+    padding: 14px;
   }
 
-  /* Botones verticales a la derecha (Cuadrados, bordes redondeados y verdes) */
+  /* Navegación vertical */
   .carousel-nav-mobile-column {
     position: absolute;
-    right: -55px;
+    right: -60px;
     top: 35%;
     display: flex;
     flex-direction: column;
@@ -191,26 +195,47 @@ html, body {
     z-index: 10;
   }
 
+  /* Mismo tamaño y estilo que los botones del catálogo */
   .carousel-nav-btn-mobile {
     background-color: var(--primary-green);
     border: none;
-    border-radius: 14px; /* Cuadrados con bordes redondeados idénticos */
-    width: 44px;
-    height: 44px;
+    border-radius: 14px;
+    width: 48px;
+    height: 48px;
+    flex-shrink: 0;
     cursor: pointer;
     display: flex;
     justify-content: center;
     align-items: center;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-    transition: filter 0.15s ease;
+    color: #ffffff;
+    transition: filter 0.15s ease, transform 0.15s ease;
   }
 
   .carousel-nav-btn-mobile:hover:not(:disabled) {
     filter: brightness(1.1);
+    transform: scale(1.05);
   }
 
   .carousel-nav-btn-mobile:disabled {
     opacity: 0.3;
     cursor: not-allowed;
   }
+}
+
+/* Flechas blancas en modo oscuro, igual que en el catálogo */
+body.dark-theme .carousel-nav-btn-mobile {
+  background-color: #ffffff;
+  border: 2px solid #d9d9d9;
+  color: #1a1a1a;
+}
+
+body.dark-theme .carousel-nav-btn-mobile svg {
+  filter: invert(1);
+}
+
+body.dark-theme .carousel-nav-btn-mobile:hover:not(:disabled) {
+  background-color: #e8e8e8;
+  border-color: #c7c7c7;
+  filter: none;
 }
