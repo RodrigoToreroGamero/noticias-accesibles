@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react';
-import { ArrowUp, ArrowDown, ChevronUp, ChevronDown } from 'lucide-react';
+import { ArrowUp, ArrowDown, ArrowLeft, ChevronUp, ChevronDown } from 'lucide-react';
 import '../styles/DetalleNoticia.css';
 import TextToSpeechButton from './TextToSpeechButton';
 import { stopSpeaking } from '../services/textToSpeech';
@@ -50,7 +50,7 @@ export default function DetalleNoticia({ noticia, onVolver }) {
 				onVolver();				
 			}}
 		>
-          Volver al Catálogo
+          <ArrowLeft size={24} /> Volver al Catálogo
         </button>
 		
 		<TextToSpeechButton text={`${noticia.nombre}. ${textoCompleto}`}/>
