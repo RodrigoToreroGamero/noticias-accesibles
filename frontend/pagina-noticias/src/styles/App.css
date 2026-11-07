@@ -341,3 +341,86 @@ body.dark-theme .catalogo-container .nav-arrows-column .nav-arrow-btn:hover {
     color 0.55s ease,
     border-color 0.55s ease;
 }
+/* --- CONTROLES DE VOZ Y ESTADOS DESHABILITADOS --- */
+body:not(.dark-theme) .catalogo-container .btn-voice-search {
+  background-color: #0057b8;
+  color: #ffffff;
+  border-color: #003f87;
+}
+
+body:not(.dark-theme) .catalogo-container .btn-voice-search.is-listening {
+  background-color: #b42318;
+  color: #ffffff;
+  border-color: #7f1d1d;
+}
+
+body.dark-theme .catalogo-container .btn-voice-search {
+  background-color: #0057b8;
+  color: #ffffff;
+  border: 2px solid #8ab4f8;
+  box-shadow: 0 4px 12px rgba(0, 87, 184, 0.32);
+}
+
+body.dark-theme .catalogo-container .btn-voice-search:hover:not(:disabled) {
+  background-color: #003f87;
+  color: #ffffff;
+}
+
+body.dark-theme .catalogo-container .btn-voice-search.is-listening {
+  --voice-pulse-color: rgba(180, 35, 24, 0.58);
+  background-color: #b42318;
+  color: #ffffff;
+  border-color: #ffaaa3;
+  outline: 2px solid #ffaaa3;
+  outline-offset: 2px;
+}
+
+body.dark-theme .catalogo-container .btn-voice-search.is-listening:hover {
+  background-color: #941b13;
+}
+
+body.dark-theme .catalogo-container .btn-voice-search:focus-visible {
+  outline: 3px solid #ffffff;
+  outline-offset: 4px;
+}
+
+body.dark-theme .catalogo-container .voice-search-status {
+  color: #ffe082;
+}
+
+body.dark-theme .catalogo-container .search-icon {
+  color: #ffffff;
+}
+
+body.dark-theme .catalogo-container .catalogo-input::placeholder {
+  color: #d4d4d4;
+}
+
+body.dark-theme .catalogo-container .nav-arrows-column .nav-arrow-btn:disabled,
+body.dark-theme .detalle-noticia-container .nav-arrows-column .nav-arrow-btn:disabled {
+  opacity: 0.28;
+  cursor: not-allowed;
+  background-color: #ffffff;
+  color: #1a1a1a;
+  border-color: #d9d9d9;
+  box-shadow: none;
+  filter: none;
+  transform: none;
+}
+
+body.dark-theme .catalogo-container .nav-arrows-column .nav-arrow-btn:disabled:hover,
+body.dark-theme .detalle-noticia-container .nav-arrows-column .nav-arrow-btn:disabled:hover {
+  background-color: #ffffff;
+  color: #1a1a1a;
+  filter: none;
+  transform: none;
+}
+
+body.dark-theme .detalle-noticia-container .btn-arrow-small:disabled,
+body.dark-theme .detalle-noticia-container .btn-arrow-small:disabled:hover {
+  opacity: 0.28;
+  cursor: not-allowed;
+  background-color: #ffffff;
+  color: #1a1a1a;
+  border-color: #d9d9d9;
+}

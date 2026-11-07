@@ -1,4 +1,4 @@
-import { User, Sun, Moon } from 'lucide-react';
+import { Sun, Moon } from 'lucide-react';
 import '../styles/Header.css';
 
 export default function Header({
@@ -55,14 +55,7 @@ export default function Header({
         >
           {darkMode ? <Sun size={26} color="#ffca28" /> : <Moon size={26} color="#111" />}
         </button>
-
-        <button
-          type="button"
-          className="header-user-btn"
-          aria-label="Perfil de usuario"
-        >
-          <User size={26} color="#000" />
-        </button>
+     
       </div>
 	
     </header>

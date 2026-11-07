@@ -4,6 +4,7 @@ import '../styles/DetalleNoticia.css';
 import { Volume2, Pause, Play } from 'lucide-react';
 
 export default function TextToSpeechButton({ text }) {
+
   const [playbackState, setPlaybackState] = useState('idle');
   // Detener la lectura al abandonar el detalle.
   useEffect(() => {
@@ -66,4 +67,5 @@ export default function TextToSpeechButton({ text }) {
       {buttonLabel}
     </button>
   );
+
 }
