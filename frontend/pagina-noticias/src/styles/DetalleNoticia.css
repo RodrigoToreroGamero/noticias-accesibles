@@ -24,6 +24,7 @@
 
 /* Estilo unificado de botones Verdes */
 .btn-verde {
+  background-color: var(--primary-green);
   color: #ffffff;
   border: none;
   font-weight: bold;
@@ -39,8 +40,23 @@
 }
 
 .btn-volver {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
   padding: 14px 28px;
   font-size: 1.2rem;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+.btn-volver svg {
+  display: block;
+  flex: 0 0 auto;
+}
+
+.btn-volver span {
+  display: block;
 }
 
 .btn-escuchar {
@@ -173,8 +189,18 @@
   color: #333;
 }
 
-.btn-arrow-small:hover {
+.btn-arrow-small:hover:not(:disabled) {
   background-color: #e8e8e8;
+}
+
+.btn-arrow-small:disabled {
+  opacity: 0.32;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.btn-arrow-small:disabled:hover {
+  background-color: #ffffff;
 }
 
 /* Botones laterales para desplazar toda la página */
@@ -198,9 +224,20 @@
   color: #fff;
 }
 
-.nav-arrow-btn:hover {
+.nav-arrow-btn:hover:not(:disabled) {
   background-color: #f0f0f0;
   color: #000;
+}
+
+.nav-arrow-btn:disabled {
+  opacity: 0.32;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.nav-arrow-btn:disabled:hover {
+  background-color: #00a600;
+  color: #ffffff;
 }
 
 @media (max-width: 768px) {
