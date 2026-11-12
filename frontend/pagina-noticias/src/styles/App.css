@@ -424,3 +424,9 @@ body.dark-theme .detalle-noticia-container .btn-arrow-small:disabled:hover {
   color: #1a1a1a;
   border-color: #d9d9d9;
 }
+
+
+*:focus-visible {
+  outline: 4px solid #FF8C00;
+  outline-offset: 3px;
+}

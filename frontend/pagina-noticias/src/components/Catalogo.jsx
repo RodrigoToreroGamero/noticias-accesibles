@@ -159,15 +159,14 @@ export default function Catalogo({
           )}
 
           {elementosFiltrados.map((item) => (
-            <div
+            <button
+			type="button"
               key={item.id}
               className="catalogo-card catalogo-card-clickable"
               onClick={() => {
                 onSelectCard?.(item);
                 setBusqueda('');
-              }}
-              role="button"
-              tabIndex={0}
+              }}              
             >
               <div className="catalogo-card-title-bar">{item.nombre}</div>
               <img
@@ -176,7 +175,7 @@ export default function Catalogo({
                 className="catalogo-card-image"
               />
               <span className="catalogo-card-button">Leer Noticias</span>
-            </div>
+            </button>
           ))}
         </div>
 

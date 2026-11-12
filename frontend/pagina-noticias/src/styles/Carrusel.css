@@ -53,9 +53,16 @@ html, body {
   box-sizing: border-box;
   background-color: #ffffff;
   cursor: pointer;
-  outline: 2px solid transparent;
+  /*outline: 2px solid transparent;*/
   outline-offset: 1px;
   transition: transform 0.6s ease-in-out, box-shadow 0.6s ease-in-out;
+  
+  border: none;
+  appearance: none;
+  -webkit-appearance: none;
+  font: inherit;
+  color: inherit;
+  text-align: inherit;
 }
 
 /* Elevación sutil al pasar el cursor, recuperando el movimiento original. */
@@ -67,9 +74,9 @@ html, body {
 }
 
 .carousel-card-item:focus-visible {
-  outline-color: rgba(0, 166, 0, 0.65);
-  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.16),
-              0 0 0 2px rgba(0, 166, 0, 0.22);
+  outline-color: 4px solid #FF8C00;
+  outline-offset: 3px;
+  box-shadow: none;
 }
 
 .carousel-card-title {

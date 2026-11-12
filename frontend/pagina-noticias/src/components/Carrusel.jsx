@@ -42,19 +42,18 @@ export default function Carrusel({ onSelectCategoria }) {
         {/* Contenedor de Tarjetas */}
         <div className="carousel-cards-box">
           {tarjetasVisibles.map((bloque) => (
-            <div 
+            <button
+			  type="button"
               key={bloque.id} 
               className="carousel-card-item"
-              onClick={() => onSelectCategoria && onSelectCategoria(bloque.id)}     
-              role="button"
-              tabIndex={0}
+              onClick={() => onSelectCategoria && onSelectCategoria(bloque.id)}                                 
             >
               <div className="carousel-card-title">{bloque.titulo}</div>
               <img src={bloque.imagen} alt={bloque.titulo} className="carousel-card-img" />
               <span className="carousel-card-btn-text">
                 Acceder al contenido
               </span>
-            </div>
+            </button>
           ))}
         </div>
         
