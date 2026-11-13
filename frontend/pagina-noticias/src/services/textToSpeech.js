@@ -229,6 +229,7 @@ function speakCurrentChunk(session) {
     if (!isCurrentUtterance(session, utterance)) return;
 
     console.error('Error durante la lectura:', event.error);
+	alert("Este navegador no soporta la función 'Síntesis de Voz'");
 
     finishSession(session, event);
   };

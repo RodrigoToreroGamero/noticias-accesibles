@@ -223,6 +223,7 @@
   box-sizing: border-box;
   background-color: #ffffff;
   
+  padding: 0;
   border: none;
   appearance: none;
   -webkit-appearance: none;
@@ -249,7 +250,7 @@
 }
 
 .catalogo-card-clickable:focus-visible {
-	outline-color: 4px solid #FF8C00;
+	outline: 4px solid #FF8C00 !important;
 	outline-offset: 3px;
 	box-shadow: none;
 }

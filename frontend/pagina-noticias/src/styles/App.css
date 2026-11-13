@@ -427,6 +427,6 @@ body.dark-theme .detalle-noticia-container .btn-arrow-small:disabled:hover {
 
 
 *:focus-visible {
-  outline: 4px solid #FF8C00;
+  outline: 4px solid #FF8C00 !important;
   outline-offset: 3px;
 }
