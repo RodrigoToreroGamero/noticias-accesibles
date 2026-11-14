@@ -1,5 +1,6 @@
-import { Sun, Moon } from 'lucide-react';
+import { Sun, Moon, Keyboard, KeyboardOff, ArrowLeftRight, ArrowBigUp, CornerDownLeft, Space, ArrowDown, ArrowUp } from 'lucide-react';
 import '../styles/Header.css';
+import { useState } from 'react';
 
 export default function Header({
   darkMode,
@@ -7,7 +8,9 @@ export default function Header({
   fontSize,
   onAumentarFuente,
   onDisminuirFuente  
-}) {  
+}) {
+
+	const [showKeyboardHelp, setShowKeyboardHelp] = useState(false);
   
   return (
     <header className="header-container">
@@ -20,8 +23,7 @@ export default function Header({
           className="header-logo-img"
         />
         <span className="header-title">NotiClara</span>
-      </div>
-
+      </div>	  	  
       
       {/* Controles de Accesibilidad */}
       <div className="header-right-actions">
@@ -55,6 +57,56 @@ export default function Header({
         >
           {darkMode ? <Sun size={26} color="#ffca28" /> : <Moon size={26} color="#111" />}
         </button>
+		
+		{/* Ayuda de navegación por teclado */}
+		<button
+			type="button"			
+			className="keyboard-help-btn"
+			title="Ayuda del teclado"
+			onClick={() => setShowKeyboardHelp(previousState => !previousState)}
+			aria-expanded={showKeyboardHelp}
+			aria-controls="keyboard-help"
+			aria-label="Ayuda de navegación por teclado"
+		>
+			{showKeyboardHelp ? <KeyboardOff size={24} aria-hidden="true" /> : <Keyboard size={24} aria-hidden="true" />}			
+		</button>
+		
+		{showKeyboardHelp && (
+			<section
+				id="keyboard-help"
+				className="keyboard-help-section"
+				aria-label="Instrucciones de navegación por teclado"
+			>
+				<h4>Navegación por teclas:</h4>
+				<ul>
+					<li>
+						<p>
+							<b>Avanzar: </b><kbd>Tab</kbd><ArrowLeftRight size={24} aria-hidden="true" />
+						</p>
+					</li>
+					<li>
+						<p>
+							<b>Retroceder: </b><kbd>Shift</kbd><ArrowBigUp size={24} aria-hidden="true" />+<kbd>Tab</kbd><ArrowLeftRight size={24} aria-hidden="true" />
+						</p>	
+					</li>
+					<li>
+						<p>
+							<b>Activar: </b><kbd>Enter</kbd><CornerDownLeft size={24} aria-hidden="true" /> o <kbd>Espacio</kbd><Space size={24} aria-hidden="true" />
+						</p>
+					</li>
+					<li>
+						<p>
+							<b>Subir: </b><kbd>Fecha arriba</kbd><ArrowUp size={24} aria-hidden="true" />
+						</p>
+					</li>
+					<li>
+						<p>
+							<b>Bajar: </b><kbd>Fecha abajo</kbd><ArrowDown size={24} aria-hidden="true" />
+						</p>
+					</li>
+				</ul>
+			</section>
+		)}
      
       </div>
 	

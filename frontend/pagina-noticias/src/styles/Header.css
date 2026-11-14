@@ -43,7 +43,7 @@
   font-style: italic;
 }
 
-/* Botón de la Encuesta de Usabilidad (Google Forms) */
+/* Botón de la Encuesta de Usabilidad (Google Forms)
 .btn-encuesta-header {
   display: flex;
   align-items: center;
@@ -65,8 +65,9 @@
   background-color: #f0f0f0;
   transform: scale(1.03);
 }
+ */
 
-/* Caja de Búsqueda */
+/* Caja de Búsqueda
 .header-search-box {
   display: flex;
   align-items: center;
@@ -100,8 +101,8 @@
   padding: 4px;
   color: #000;
 }
-
-/* Feedback visual cuando el micrófono del Header está escuchando */
+*/
+/* Feedback visual cuando el micrófono del Header está escuchando
 .header-mic-btn.escuchando-anim {
   animation: pulso-mic 1.2s infinite ease-in-out;
 }
@@ -120,6 +121,7 @@
     opacity: 1;
   }
 }
+*/
 
 /* Acciones a la derecha */
 .header-right-actions {
@@ -258,3 +260,55 @@
 		width: 100%;	  
 	}
 }
+
+.keyboard-help-btn {
+	display: flex;
+	align-items: center;
+	background-color: #ffffff;
+	border: none;
+	border-radius: 25px;
+	padding: 8px 14px;
+	cursor: pointer;
+}
+
+.keyboard-help-section {
+	display: flex;
+	flex-direction: column;		
+	background-color: #ffffff;	
+	border-radius: 25px;	
+	padding: 1rem;	
+}
+.keyboard-help-section h4,
+.keyboard-help-section ul {
+	padding-top: 0;
+	margin: 0;
+}
+
+.dark-theme .keyboard-help-btn, 
+.dark-theme .keyboard-help-section {
+	background: #121212;
+	color: #f0f0f0;
+}
+
+@media (max-width: 768px) {
+	.keyboard-help-btn {
+		display: none;
+	}
+	.keyboard-help-section {
+		display: none;
+	}
+}
+
+
+kbd {
+	border-radius: 3px;
+	padding: 1px 2px 0;
+	border: 1px solid black;
+	margin: 0.3rem;
+}
+.dark-theme kbd {
+	border: 1px solid white;
+}
+
+
+
