@@ -1,6 +1,6 @@
-import { Sun, Moon, Keyboard, KeyboardOff, ArrowLeftRight, ArrowBigUp, CornerDownLeft, Space, ArrowDown, ArrowUp } from 'lucide-react';
+import { Sun, Moon, Keyboard, ArrowLeftRight, ArrowBigUp, CornerDownLeft, Space, ArrowDown, ArrowUp, X } from 'lucide-react';
 import '../styles/Header.css';
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 export default function Header({
   darkMode,
@@ -11,6 +11,22 @@ export default function Header({
 }) {
 
 	const [showKeyboardHelp, setShowKeyboardHelp] = useState(false);
+	const dialogRef = useRef(null);
+	const closeBtnRef = useRef(null);
+	
+	useEffect(() => {
+		let currentOverflow = document.body.style.overflow;
+		if(showKeyboardHelp) {
+			if(closeBtnRef.current) closeBtnRef.current.focus();
+			document.body.style.overflow = "hidden";
+		} else {
+			document.body.style.overflow = currentOverflow;
+		}
+		
+		return () => {
+			document.body.style.overflow = currentOverflow;
+		};			
+	}, [showKeyboardHelp]);
   
   return (
     <header className="header-container">
@@ -63,49 +79,71 @@ export default function Header({
 			type="button"			
 			className="keyboard-help-btn"
 			title="Ayuda del teclado"
-			onClick={() => setShowKeyboardHelp(previousState => !previousState)}
+			onClick={() => setShowKeyboardHelp(true)}
+			aria-haspopup="dialog"
 			aria-expanded={showKeyboardHelp}
 			aria-controls="keyboard-help"
-			aria-label="Ayuda de navegación por teclado"
+			aria-label="Abrir ayuda de navegación por teclado"
 		>
-			{showKeyboardHelp ? <KeyboardOff size={24} aria-hidden="true" /> : <Keyboard size={24} aria-hidden="true" />}			
+			<Keyboard size={24} aria-hidden="true" />
 		</button>
 		
 		{showKeyboardHelp && (
-			<section
-				id="keyboard-help"
-				className="keyboard-help-section"
-				aria-label="Instrucciones de navegación por teclado"
-			>
-				<h4>Navegación por teclas:</h4>
-				<ul>
-					<li>
-						<p>
-							<b>Avanzar: </b><kbd>Tab</kbd><ArrowLeftRight size={24} aria-hidden="true" />
-						</p>
-					</li>
-					<li>
-						<p>
-							<b>Retroceder: </b><kbd>Shift</kbd><ArrowBigUp size={24} aria-hidden="true" />+<kbd>Tab</kbd><ArrowLeftRight size={24} aria-hidden="true" />
-						</p>	
-					</li>
-					<li>
-						<p>
-							<b>Activar: </b><kbd>Enter</kbd><CornerDownLeft size={24} aria-hidden="true" /> o <kbd>Espacio</kbd><Space size={24} aria-hidden="true" />
-						</p>
-					</li>
-					<li>
-						<p>
-							<b>Subir: </b><kbd>Fecha arriba</kbd><ArrowUp size={24} aria-hidden="true" />
-						</p>
-					</li>
-					<li>
-						<p>
-							<b>Bajar: </b><kbd>Fecha abajo</kbd><ArrowDown size={24} aria-hidden="true" />
-						</p>
-					</li>
-				</ul>
-			</section>
+			<article className="modal-overlay">
+				<section
+					id="keyboard-help"
+					className="keyboard-help-section"
+					ref={dialogRef}
+					role="dialog"
+					aria-label="Instrucciones de navegación por teclado"
+					aria-modal="true"
+					aria-labelledby="keyboard-title"
+					aria-describedby="keyboard-description"
+				>
+					<button
+						type="button"
+						className="modal-close"
+						ref={closeBtnRef}
+						onClick={() => setShowKeyboardHelp(false)}
+						aria-label="Cerrar ayuda de navegación"
+					>
+						<X size={24} aria-hidden="true" /> Cerrar
+					</button>
+					<h2 id="Keyboard-title">
+						Ayuda de navegación por teclado
+					</h2>
+					<p id="keyboard-description">
+						Puedes utilizar estas teclas para navegar:
+					</p>
+					<ul>
+						<li>
+							<p>
+								<b>Avanzar: </b><kbd>Tab</kbd><ArrowLeftRight size={24} aria-hidden="true" />
+							</p>
+						</li>
+						<li>
+							<p>
+								<b>Retroceder: </b><kbd>Shift</kbd><ArrowBigUp size={24} aria-hidden="true" />+<kbd>Tab</kbd><ArrowLeftRight size={24} aria-hidden="true" />
+							</p>	
+						</li>
+						<li>
+							<p>
+								<b>Activar: </b><kbd>Enter</kbd><CornerDownLeft size={24} aria-hidden="true" /> o <kbd>Espacio</kbd><Space size={24} aria-hidden="true" />
+							</p>
+						</li>
+						<li>
+							<p>
+								<b>Subir: </b><kbd>Fecha arriba</kbd><ArrowUp size={24} aria-hidden="true" />
+							</p>
+						</li>
+						<li>
+							<p>
+								<b>Bajar: </b><kbd>Fecha abajo</kbd><ArrowDown size={24} aria-hidden="true" />
+							</p>
+						</li>
+					</ul>
+				</section>
+			</article>
 		)}
      
       </div>
