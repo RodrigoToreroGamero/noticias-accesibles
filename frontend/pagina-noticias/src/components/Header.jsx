@@ -12,21 +12,21 @@ export default function Header({
 
 	const [showKeyboardHelp, setShowKeyboardHelp] = useState(false);
 	const dialogRef = useRef(null);
-	const closeBtnRef = useRef(null);
+	const openBtnRef = useRef(null);
 	
 	useEffect(() => {
-		let currentOverflow = document.body.style.overflow;
-		if(showKeyboardHelp) {
-			if(closeBtnRef.current) closeBtnRef.current.focus();
-			document.body.style.overflow = "hidden";
-		} else {
-			document.body.style.overflow = currentOverflow;
+		const dialog = dialogRef.current;
+		if(showKeyboardHelp && dialog && !dialog.open) {
+			dialog.showModal();		
 		}
-		
-		return () => {
-			document.body.style.overflow = currentOverflow;
-		};			
 	}, [showKeyboardHelp]);
+	
+	const handleClose = () => {
+		setShowKeyboardHelp(false);
+		if(openBtnRef.current) {
+			openBtnRef.current.focus();
+		}
+	};
   
   return (
     <header className="header-container">
@@ -78,6 +78,7 @@ export default function Header({
 		<button
 			type="button"			
 			className="keyboard-help-btn"
+			ref={openBtnRef}
 			title="Ayuda del teclado"
 			onClick={() => setShowKeyboardHelp(true)}
 			aria-haspopup="dialog"
@@ -87,66 +88,59 @@ export default function Header({
 		>
 			<Keyboard size={24} aria-hidden="true" />
 		</button>
-		
-		{showKeyboardHelp && (
-			<article className="modal-overlay">
-				<section
-					id="keyboard-help"
-					className="keyboard-help-section"
-					ref={dialogRef}
-					role="dialog"
-					aria-label="Instrucciones de navegación por teclado"
-					aria-modal="true"
-					aria-labelledby="keyboard-title"
-					aria-describedby="keyboard-description"
-				>
-					<button
-						type="button"
-						className="modal-close"
-						ref={closeBtnRef}
-						onClick={() => setShowKeyboardHelp(false)}
-						aria-label="Cerrar ayuda de navegación"
-					>
-						<X size={24} aria-hidden="true" /> Cerrar
-					</button>
-					<h2 id="Keyboard-title">
-						Ayuda de navegación por teclado
-					</h2>
-					<p id="keyboard-description">
-						Puedes utilizar estas teclas para navegar:
+		</div>
+		<dialog
+			id="keyboard-help"
+			className="keyboard-help-section"
+			ref={dialogRef}			
+			aria-label="Instrucciones de navegación por teclado"			
+			aria-labelledby="keyboard-title"
+			aria-describedby="keyboard-description"
+			onClose={handleClose}
+		>
+			<button
+				type="button"
+				className="close-keyboard-help-btn"
+				autoFocus						
+				onClick={() => dialogRef.current?.close()}
+				aria-label="Cerrar ayuda de navegación"
+			>
+				<X size={24} aria-hidden="true" /> Cerrar
+			</button>
+			<h4 id="keyboard-title">
+				Ayuda de navegación por teclado
+			</h4>
+			<p id="keyboard-description">
+				Puedes utilizar estas teclas para navegar:
+			</p>
+			<ul>
+				<li>
+					<p>
+						<b>Subir: </b><kbd>Fecha arriba</kbd><ArrowUp size={24} aria-hidden="true" />
 					</p>
-					<ul>
-						<li>
-							<p>
-								<b>Avanzar: </b><kbd>Tab</kbd><ArrowLeftRight size={24} aria-hidden="true" />
-							</p>
-						</li>
-						<li>
-							<p>
-								<b>Retroceder: </b><kbd>Shift</kbd><ArrowBigUp size={24} aria-hidden="true" />+<kbd>Tab</kbd><ArrowLeftRight size={24} aria-hidden="true" />
-							</p>	
-						</li>
-						<li>
-							<p>
-								<b>Activar: </b><kbd>Enter</kbd><CornerDownLeft size={24} aria-hidden="true" /> o <kbd>Espacio</kbd><Space size={24} aria-hidden="true" />
-							</p>
-						</li>
-						<li>
-							<p>
-								<b>Subir: </b><kbd>Fecha arriba</kbd><ArrowUp size={24} aria-hidden="true" />
-							</p>
-						</li>
-						<li>
-							<p>
-								<b>Bajar: </b><kbd>Fecha abajo</kbd><ArrowDown size={24} aria-hidden="true" />
-							</p>
-						</li>
-					</ul>
-				</section>
-			</article>
-		)}
-     
-      </div>
+				</li>
+				<li>
+					<p>
+						<b>Bajar: </b><kbd>Fecha abajo</kbd><ArrowDown size={24} aria-hidden="true" />
+					</p>
+				</li>
+				<li>
+					<p>
+						<b>Avanzar: </b><kbd>Tab</kbd><ArrowLeftRight size={24} aria-hidden="true" />
+					</p>
+				</li>
+				<li>
+					<p>
+						<b>Retroceder: </b><kbd>Shift</kbd><ArrowBigUp size={24} aria-hidden="true" />+<kbd>Tab</kbd><ArrowLeftRight size={24} aria-hidden="true" />
+					</p>	
+				</li>
+				<li>
+					<p>
+						<b>Activar: </b><kbd>Enter</kbd><CornerDownLeft size={24} aria-hidden="true" /> o <kbd>Espacio</kbd><Space size={24} aria-hidden="true" />
+					</p>
+				</li>			
+			</ul>		
+		</dialog>
 	
     </header>
   );
