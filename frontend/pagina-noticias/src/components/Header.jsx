@@ -34,7 +34,7 @@ export default function Header({
       {/* Marca / Logo */}
       <div className="header-brand">
         <img 
-          src="/brand/logo-noticlara.png" 
+          src=`${import.meta.env.BASE_URL}brand/logo-noticlara.png`
           alt="NotiClara Logo" 
           className="header-logo-img"
         />
