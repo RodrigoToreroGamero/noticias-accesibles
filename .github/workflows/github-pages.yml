@@ -3,8 +3,7 @@ name: Despliegue del portal de noticias en react hacia github pages
 
 on:
   push:
-    branches:
-      #- feature/deployment-github-actions
+    branches:      
       - main
 
   workflow_dispatch:
