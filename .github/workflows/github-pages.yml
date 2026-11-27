@@ -1,10 +1,11 @@
-
+# Workflow para desplegar en GitHub Pages
 name: Despliegue del portal de noticias en react hacia github pages
 
 on:
   push:
     branches:
-      - feature/deployment-github-actions
+      #- feature/deployment-github-actions
+      - main
 
   workflow_dispatch:
 
