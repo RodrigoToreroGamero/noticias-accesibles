@@ -182,7 +182,7 @@
 	}
 }
 
-.keyboard-help-btn {
+.accessibility-options-btn {
 	display: flex;
 	align-items: center;
 	background-color: #ffffff;
@@ -191,24 +191,26 @@
 	padding: 8px 14px;
 	cursor: pointer;
 	transition: transform 0.15s ease;
+	font: inherit;
 }
 
-.close-keyboard-help-btn {
+.close-accessibility-options-btn {
 	display: flex;
 	align-items: center;
 	background-color: #ffffff;
-	border: none;
+	border: 2px solid black;
 	border-radius: 15px;
 	margin-left: auto;	
 	cursor: pointer;
-	transition: transform 0.15s ease;	
+	transition: transform 0.15s ease;
+	font: inherit;
 }
 
-.keyboard-help-btn:hover, .close-keyboard-help-btn:hover {
+.accessibility-options-btn:hover, .close-accessibility-options-btn:hover {
   transform: scale(1.08);
 }
 
-.keyboard-help-section {
+.accessibility-options-section {
 	/* display: flex hace que el diálogo modal aparezca incluso cuando no se ha ejecutado showModal() */
 	flex-direction: column;		
 	background-color: #ffffff;	
@@ -222,36 +224,41 @@
 	margin: auto;
 	font-size: 1.1rem;
 	line-height: 1.8;
+	
+	gap: 0.5rem;
 }
-.keyboard-help-section[open] {
+.accessibility-options-section[open] {
 	display: flex; /* Display flex solo cuando el diálogo esta abierto. */
 }
-.keyboard-help-section::backdrop {
+.accessibility-options-section::backdrop {
 	background: rgba(0, 0, 0, 0.65);
 }
-.keyboard-help-section h4,
-.keyboard-help-section ul {
+.accessibility-options-section h4,
+.accessibility-options-section ul {
 	padding-top: 0;
 	margin: 0;
 }
 
-.dark-theme .keyboard-help-btn,
-.dark-theme .close-keyboard-help-btn, 
-.dark-theme .keyboard-help-section {
+.dark-theme .accessibility-options-btn,
+.dark-theme .close-accessibility-options-btn, 
+.dark-theme .accessibility-options-section {
 	background: #121212;
 	color: #f0f0f0;
+	border: 2px solid white;
 }
+
+
 /*
 @media (max-width: 768px) {
-	.keyboard-help-btn {
+	.accessibility-options-btn {
 		display: none;
 	}
-	.keyboard-help-section {
+	.accessibility-options-section {
 		display: none;
 	}
 }
 */
-.keyboard-help-section kbd {
+.accessibility-options-section kbd {
 	border-radius: 5px;
 	padding: 0.5rem 1rem 0;
 	border: 1px solid black;
@@ -262,6 +269,13 @@
 }
 .dark-theme kbd {
 	border: 1px solid white;
+}
+
+.contrast-btn-section {
+	display: flex;
+	flex-direction: horizontal;
+	gap: 0.5rem;
+	align-items: center;
 }
 
 
